@@ -1,0 +1,69 @@
+#website_body
+{
+    background-image: url("./legobase-repeating.png");
+    background-repeat:repeat;
+    padding:0;
+    margin: 0;
+}
+#website_header
+{
+    background-color: rgb(255, 207, 0);
+    height: 20vh;
+    box-shadow: black;
+    width:100%;
+    table-layout: fixed;
+    border: none;
+}
+
+input
+{
+    width: 30vw;
+    height: 2vw;
+    border-radius: 18px;
+    font-size: 1vw;
+}
+
+#lego_img
+{
+    height: 16vh;
+    margin-left: 2vh;
+}
+
+#lego_gubbe_img
+{
+    height: 16vh;
+    margin-left: 2vh;
+    margin-right: 2vw;
+}
+
+#header_column
+{   
+    text-align: center;
+}
+
+#right_header_column
+{
+    text-align: right;
+    margin: 0;
+    padding: 0;
+}
+
+#sets_table {
+    margin: auto;
+    margin-top: 2vw;
+    background-color: red;
+    border: solid greenyellow;
+    table-layout: fixed;
+    height: 40vh;
+}
+
+.sets_img {
+    border: solid black;
+    padding: 3vw;
+}
+
+.sets_info {
+    border: solid black;
+    width: 30vw;
+
+}
