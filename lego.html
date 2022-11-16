@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Lego Website</title>
     <link href="styles.css" rel="stylesheet">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body id="website_body">
@@ -15,8 +15,8 @@
                 <img src="LEGO_logo.svg.png" alt="lego_logo" id="lego_img">
             </td>
             <td id="header_column">
-                <div id="search_bar">
-                    <form><input type="text" placeholder="Search..">
+                <div class="autocomplete">
+                    <form><input type="text" id="search_bar" placeholder="Search..">
                     </form>
                 </div>
             </td>
