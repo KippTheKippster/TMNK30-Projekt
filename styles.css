@@ -1,6 +1,6 @@
 #website_body
 {
-    background-image: url("./legobase-repeating.png");
+    background-image: url("images/lego_base.png");
     background-repeat:repeat;
     background-size: 2vw;
     background-attachment: fixed;
@@ -74,14 +74,22 @@ input[type=text]:focus {
     margin-top: 20vh;
 }
 
-.sets_img {
-    border: solid black;
-    padding: 3vw;
+.sets_img
+{
     width: 10vw;
-    height: 10vw;
+    padding: 0;
+    margin: 0;
 }
 
-.sets_info {
+.sets_img_td {
+    border: solid black;
+    padding: 0vw;
+    text-align: center;
+    width: 16vw;
+    height: 16vw;
+}
+
+.sets_info_td {
     padding: 3vw;
     border: solid black;
     width: 50vw;
