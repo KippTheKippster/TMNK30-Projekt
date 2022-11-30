@@ -14,7 +14,7 @@
     box-shadow: black;
     width:100%;
     border: none;
-    box-shadow: rgba(0, 0, 0, 0.3) 0.70vw 0.8vw 0.70vw 0.80vw;
+    box-shadow: rgba(0, 0, 0, 0.5) 0.70vw 0.8vw 2vw 2.5vw;
     position: fixed;
     top: 0;
     
@@ -64,15 +64,18 @@ input[type=text]:focus {
 }
 
 #sets_table {
-    margin: auto;
-    margin-top: 2vw;
+    display: block;
+    overflow-y: scroll;
+    margin-left: 13vw;
+    margin-right: 13vw;
     background-color: rgb(255, 207, 0);
-    border: solid rgb(255, 207, 0);
     table-layout: fixed;
-    height: 40vh;
+    height: 76vh;
     border-collapse: collapse;
     font-size: 2vw;
-    margin-top: 20vh;
+    margin-top: 21vh;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .sets_img
@@ -138,6 +141,7 @@ h1 {
 
 /*Breadcrums*/
 ul.breadcrumb {
+    width: 100%;
     list-style: none;
     color:  rgb(255, 207, 0);
     position: fixed;
@@ -165,3 +169,22 @@ ul.breadcrumb li a:hover {
     color:  rgb(255, 207, 0);
     text-decoration: underline;
 }
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 20px;
+    background-color: #ccc;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(73, 73, 73);
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: white;
+  }
