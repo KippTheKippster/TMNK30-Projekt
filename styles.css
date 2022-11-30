@@ -5,7 +5,7 @@
     background-size: 2vw;
     background-attachment: fixed;
     padding:0;
-    margin: 0;
+    margin: auto;
 }
 #website_header
 {
@@ -20,6 +20,7 @@
     
 }
 
+/*search bar properties*/
 input[type=text] {
     width: 40vw;
     padding: 12px 20px;
@@ -78,7 +79,7 @@ input[type=text]:focus {
 {
     width: 10vw;
     padding: 0;
-    margin: 0;
+    margin: auto;
 }
 
 .sets_img_td {
@@ -128,4 +129,39 @@ input[type=text]:focus {
 .autocomplete-active {
     background-color: DodgerBlue !important; 
     color: #ffffff; 
-  }
+}
+
+h1 {
+    margin: auto;
+    
+}
+
+/*Breadcrums*/
+ul.breadcrumb {
+    list-style: none;
+    color:  rgb(255, 207, 0);
+    position: fixed;
+    top: 16vh;
+    left: 0vw;
+}
+
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: white;
+    content: "/\00a0";
+}
+
+ul.breadcrumb li a {
+    color:  white;
+    text-decoration: none;
+}
+
+ul.breadcrumb li a:hover {
+    color:  rgb(255, 207, 0);
+    text-decoration: underline;
+}
