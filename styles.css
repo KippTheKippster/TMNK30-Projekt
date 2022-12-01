@@ -1,23 +1,22 @@
-#website_body
-{
+#website_body {
     background-image: url("images/lego_base.png");
-    background-repeat:repeat;
+    background-repeat: repeat;
     background-size: 2vw;
     background-attachment: fixed;
-    padding:0;
+    padding: 0;
     margin: auto;
 }
-#website_header
-{
+
+#website_header {
     background-color: rgb(255, 207, 0);
     height: 10vh;
     box-shadow: black;
-    width:100%;
+    width: 100%;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.5) 0.70vw 0.8vw 2vw 2.5vw;
     position: fixed;
     top: 0;
-    
+
 }
 
 /*search bar properties*/
@@ -38,26 +37,22 @@ input[type=text]:focus {
     border: 3px solid cyan;
 }
 
-#lego_img
-{
+#lego_img {
     height: 16vh;
     margin-left: 2vh;
 }
 
-#lego_gubbe_img
-{
+#lego_gubbe_img {
     height: 16vh;
     margin-left: 2vw;
     margin-right: 2vw;
 }
 
-#header_column
-{   
+#header_column {
     text-align: center;
 }
 
-#right_header_column
-{
+#right_header_column {
     text-align: right;
     margin: 0;
     padding: 0;
@@ -78,8 +73,7 @@ input[type=text]:focus {
     border-bottom-right-radius: 10px;
 }
 
-.sets_img
-{
+.sets_img {
     width: 10vw;
     padding: 0;
     margin: auto;
@@ -99,6 +93,63 @@ input[type=text]:focus {
     width: 50vw;
 
 }
+
+/* Modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+.modal-content {
+    position: relative;
+    background-color: #ffffff;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    height: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    top: 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
 
 /*https://www.w3schools.com/howto/howto_js_autocomplete.asp*/
 
@@ -122,28 +173,29 @@ input[type=text]:focus {
 .autocomplete-items div {
     padding: 10px;
     cursor: pointer;
-    background-color: #fff; 
-    border-bottom: 1px solid #d4d4d4; 
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
 }
+
 .autocomplete-items div:hover {
     background-color: rgb(241, 241, 241);
 }
-  
+
 .autocomplete-active {
-    background-color: DodgerBlue !important; 
-    color: #ffffff; 
+    background-color: DodgerBlue !important;
+    color: #ffffff;
 }
 
 h1 {
     margin: auto;
-    
+
 }
 
 /*Breadcrums*/
 ul.breadcrumb {
     width: 100%;
     list-style: none;
-    color:  rgb(255, 207, 0);
+    color: rgb(255, 207, 0);
     position: fixed;
     top: 16vh;
     left: 0vw;
@@ -161,12 +213,12 @@ ul.breadcrumb li+li:before {
 }
 
 ul.breadcrumb li a {
-    color:  white;
+    color: white;
     text-decoration: none;
 }
 
 ul.breadcrumb li a:hover {
-    color:  rgb(255, 207, 0);
+    color: rgb(255, 207, 0);
     text-decoration: underline;
 }
 
@@ -176,15 +228,15 @@ ul.breadcrumb li a:hover {
     background-color: #ccc;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-  }
+}
 
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background-color: rgb(73, 73, 73);
     border-radius: 20px;
     border: 6px solid transparent;
     background-clip: content-box;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+::-webkit-scrollbar-thumb:hover {
     background-color: white;
-  }
+}

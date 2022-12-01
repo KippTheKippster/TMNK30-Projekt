@@ -17,7 +17,8 @@ function autocomplete(inp) {
     xhttp.send(post);
 
     xhttp.onload = function () {
-      console.log("get parts loaded!: " + this.responseText);
+      //document.getElementById("sets_table").innerHTML = this.responseText;
+      //console.log("get parts loaded!: " + this.responseText);
       const result = JSON.parse(this.responseText);
       parts = result;
       createVisuals(inp);
@@ -55,11 +56,25 @@ function autocomplete(inp) {
         /*close the list of autocompleted values,
         (or any other open lists of autocompleted values:*/
         closeAllLists();
-        updateSetsList();
+        updateSets();
+
       });
       a.appendChild(b);
     }
     //}
+  }
+
+  function updateSets() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "get_sets.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    let post = "text=" + search_bar.value;
+    console.log(search_bar.value);
+    xhttp.send(post);
+
+    xhttp.onload = function () {
+      document.getElementById("sets_table").innerHTML = this.responseText;
+    }
   }
 
   /*execute a function presses a key on the keyboard:*/
@@ -87,6 +102,10 @@ function autocomplete(inp) {
       if (currentFocus > -1) {
         /*and simulate a click on the "active" item:*/
         if (x) x[currentFocus].click();
+      }
+      else {
+        updateSets();
+        closeAllLists();
       }
     }
   });
