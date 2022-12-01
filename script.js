@@ -1,7 +1,5 @@
 
 function autocomplete(inp) {
-  /*the autocomplete function takes two arguments,
-  the text field element and an array of possible autocompleted values:*/
   var currentFocus;
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function (e) {
@@ -53,10 +51,11 @@ function autocomplete(inp) {
       /*execute a function when someone clicks on the item value (DIV element):*/
       b.addEventListener("click", function (e) {
         /*insert the value for the autocomplete text field:*/
-        inp.value = inp.getElementsByTagName("input")[0].value;
+        inp.value = this.getElementsByTagName("input")[0].value;
         /*close the list of autocompleted values,
         (or any other open lists of autocompleted values:*/
         closeAllLists();
+        updateSetsList();
       });
       a.appendChild(b);
     }
@@ -92,9 +91,6 @@ function autocomplete(inp) {
     }
   });
 
-  function input(e) {
-  }
-
   function addActive(x) {
     /*a function to classify an item as "active":*/
     if (!x) return false;
@@ -105,12 +101,14 @@ function autocomplete(inp) {
     /*add class "autocomplete-active":*/
     x[currentFocus].classList.add("autocomplete-active");
   }
+
   function removeActive(x) {
     /*a function to remove the "active" class from all autocomplete items:*/
     for (var i = 0; i < x.length; i++) {
       x[i].classList.remove("autocomplete-active");
     }
   }
+
   function closeAllLists(elmnt) {
     /*close all autocomplete lists in the document,
     except the one passed as an argument:*/
@@ -127,15 +125,9 @@ function autocomplete(inp) {
   });
 }
 
-/*An array containing Place-holder brick names:*/
-
-
-
 let parts = []
 let firstPress = true;
 const search_bar = document.getElementById("search_bar");
 console.log("start");
 
-//"Brick 1 x 1","Brick 1 x 1 x 3","Brick 1 x 1 x 5 ","Brick 1 x 2","Brick 1 x 2 x 2","Brick 1 x 2 x 3","Brick 1 x 2 x 5","Brick 1 x 3","Brick 1 x 3 x 5","Brick 1 x 4","Brick 1 x 4 x 3","Brick 1 x 6","Brick 1 x 6 x 5","Brick 1 x 8","Brick 1 x 10","Brick 1 x 12","Brick 1 x 16","Brick 2 x 2","Brick 2 x 2 Corner","Brick 2 x 2 x 3","Brick 2 x 3","Brick 2 x 4","Brick 2 x 4 x 3","Brick 2 x 6","Brick 2 x 6 x 3","Brick 2 x 8","Brick 2 x 10","Brick 4 x 4 ","Brick 4 x 6","Brick 4 x 10","Brick 4 x 12","Brick 4 x 18","Brick 8 x 8","Brick 8 x 16","Brick 10 x 10","Brick 10 x 20","Brick 12 x 24","Boat, 14 x 5 x 2 ","Boat, 14 x 5 x 2","Boat, 18 x 8 x 2","Boat, 18 x 8 x 3","Boat, Anchor","Boat, Bow Brick 6 x 6 x 1","Boat, Bow Brick 8 x 10 x 1","Boat, Bow Brick 10 x 12 x 1","Boat, Canoe"
-/*initiate the autocomplete function on the "search_bar" element, and pass along the lego-list array as possible autocomplete values:*/
 autocomplete(search_bar);
