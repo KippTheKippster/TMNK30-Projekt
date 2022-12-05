@@ -52,7 +52,14 @@
         print("
         <tr class='sets_rows'>
             <td class='sets_img_td'><img src='$filePath$fileName' alt='failed' class='sets_img'></td>
-            <td class='sets_info_td'>$row[Setname] $row[PartID]</td>
+            <td class='sets_info_td'>
+                <span class='sets_info_header'>$row[Setname]</span>
+                <hr>
+                <div class='sets_info_text'><span class='info_id'>ID:</span> $row[SetID]
+                    <span class='info_id'>Year:</span> $row[Year]
+                    Your piece is included in these colors:
+                </div>  
+            </td>     
         </tr>");
     }  
 

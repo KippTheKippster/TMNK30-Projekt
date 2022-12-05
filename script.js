@@ -150,3 +150,35 @@ const search_bar = document.getElementById("search_bar");
 console.log("start");
 
 autocomplete(search_bar);
+
+//Modal
+const modal = document.getElementById("modal");
+const modalContent = document.getElementById("modal-content");
+
+function openModal()
+{
+  modal.style.display = "block";
+  alert("bruh");
+}
+
+function closeModal()
+{
+  modal.style.display = "none";
+}
+
+function loadModal(setID)
+{
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "get_set_info.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  let post = "id=" + setID;
+  console.log(search_bar.value);
+  xhttp.send(post);
+
+  xhttp.onload = function () {
+    modalContent.innerHTML = this.responseText;
+  }
+}
+
+//openModal();
+//loadModal("3241-1");
