@@ -3,49 +3,50 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Lego Website</title>
-    <link href="stylesa.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
     <script src="script.js" defer></script>
 </head>
-
 
 <body id="website_body">
     <table id="website_header">
         <tr>
             <td>
-                <img src="images/lego_logo.png" alt="lego_logo" id="lego_img">
+                <img src="images/lego_logo.png" alt="lego_logo" class="lego_img">
             </td>
             <td id="header_column">
                 <div class="autocomplete">
-                    <form><input type="text" id="search_bar" placeholder="Search piece.." autocomplete="off">
+                    <form><input type="text" id="search_bar" placeholder="Search piece..">
                     </form>
                 </div>
             </td>
             <td id="right_header_column">
-                <img src="images/lego_gubbe.png" alt="lego_gubbe" id="lego_gubbe_img">
+                <img src="images/lego_gubbe.png" alt="lego_gubbe" class="lego_img">
             </td>
         </tr>
     </table>
-
-    <ul class="breadcrumb">
-        <li><a href="lego.html">Home</a></li>
-        <li><a href="#">Bricks</a></li>
-        <li><a href="#">1 x 1</a></li>
-        <li>Yellow</li>
-    </ul>
 
     <div>
         <table id="sets_table">
             <tr class="sets_rows">
                 <td class="sets_img_td"><img src="images/lego_gubbe.png" alt="" class="sets_img"></td>
+                <td class="sets_info_td">                 
+                    <span class="sets_info_header">LEGOCITY 60330 Sjukhus</span>
+                    <hr>
+                    <div class="sets_info_text"><span class="info_id">ID:</span> 60330
+                        <span class="info_id">Year:</span> 1643
+                        Your piece is included in these colors:
+                        
+                    </div>       
+                </td>
+            </tr>
+            <tr class="sets_rows">
+                <td class="sets_img_td"><img src="https://www.lego.com/cdn/cs/set/assets/blt9fca6bebb661ec35/60330.png" alt="" class="sets_img"></td>
                 <td class="sets_info_td">Information...</td>
             </tr>
             <tr class="sets_rows">
-                <td class="sets_img_td"><img src="images/lego_logo.png" alt="" class="sets_img"></td>
-                <td class="sets_info_td">Information...</td>
-            </tr>
-            <tr class="sets_rows">
-                <td class="sets_img_td">Bild3</td>
+                <td class="sets_img_td"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/HK-2IFC-sj_cropped.jpg/640px-HK-2IFC-sj_cropped.jpg" alt="" class="sets_img"></td>
                 <td class="sets_info_td">Information...</td>
             </tr>
             <tr class="sets_rows">
@@ -90,24 +91,6 @@
             </tr>
 
         </table>
-    </div>
-
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close">&times;</span>
-                <h2>Modal Header</h2>
-            </div>
-            <div class="modal-body">
-                <p>Some text in the Modal Body</p>
-                <p>Some other text...</p>
-            </div>
-            <div class="modal-footer">
-                <h3>Modal Footer</h3>
-            </div>
-        </div>
-
     </div>
 </body>
 
