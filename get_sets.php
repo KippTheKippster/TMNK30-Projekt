@@ -50,12 +50,13 @@
         $i++;
 
         print("
-        <tr class='sets_rows'>
+        <tr class='sets_rows go_to_set_info'>
             <td class='sets_img_td'><img src='$filePath$fileName' alt='failed' class='sets_img'></td>
             <td class='sets_info_td'>
                 <span class='sets_info_header'>$row[Setname]</span>
                 <hr>
-                <div class='sets_info_text'><span class='info_id'>ID:</span> $row[SetID]
+                <div class='sets_info_text'><span class='info_id'>ID:</span> 
+                    <span class='id_number'>$row[SetID]</span>
                     <span class='info_id'>Year:</span> $row[Year]
                     Your piece is included in these colors:
                 </div>  
@@ -67,7 +68,11 @@
     {
         print("
         <tr class='sets_rows'>
-            Failed to load...
+            <td class='sets_img_td'>
+            <h1> Failed to load... </h1>
+            </td>
+            <td class='sets_info_td'>
+            </td>     
         </tr>");
     }
 ?>

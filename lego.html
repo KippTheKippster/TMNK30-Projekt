@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Lego Website</title>
     <link href="styles.css" rel="stylesheet">
-    <script src="legoscript.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 
 
@@ -14,7 +13,7 @@
     <table id="website_header">
         <tr>
             <td>
-                <img src="images/lego_logo.png" alt="lego_logo" class="lego_img">
+            <img src="images/lego_logo.png" alt="lego_logo" class="lego_img">
             </td>
             <td id="header_column">
                 <div class="autocomplete">
@@ -37,12 +36,13 @@
 
     <div>
         <table id="sets_table">
-            <tr class="sets_rows">
+            <tr class="sets_rows go_to_set_info">
                 <td class="sets_img_td"><img src="images/lego_gubbe.png" alt="" class="sets_img"></td>
                 <td class="sets_info_td">                 
                     <span class="sets_info_header">LEGOCITY 60330 Sjukhus</span>
                     <hr>
-                    <div class="sets_info_text"><span class="info_id">ID:</span> 60330
+                    <div class="sets_info_text"><span class="info_id">ID:</span> 
+                        <span class="id_number">3241-1</span>
                         <span class="info_id">Year:</span> 1643
                         Your piece is included in these colors:
                         
@@ -56,15 +56,11 @@
         <!-- Modal content -->
         <div class="modal-content" id="modal-content">
             <div class="modal-header">
-                <span class="close">&times;</span>
-                <h2>Modal Header</h2>
+                <span id="close">&times;</span>
             </div>
-            <div class="modal-body">
+            <div id="modal-body">
                 <p>Some text in the Modal Body</p>
                 <p>Some other text...</p>
-            </div>
-            <div class="modal-footer">
-                <h3>Modal Footer</h3>
             </div>
         </div>
 
