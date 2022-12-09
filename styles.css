@@ -1,22 +1,21 @@
-#website_body
-{
+#website_body {
     background-image: url("images/lego_base.png");
-    background-repeat:repeat;
+    background-repeat: repeat;
     background-size: 2em;
     background-attachment: fixed;
-    padding:0;
+    padding: 0;
     margin: 0;
 }
-#website_header
-{
+
+#website_header {
     background-color: rgb(255, 207, 0);
     box-shadow: black;
-    width:100%;
+    width: 100%;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.3) 0.70em 0.8em 0.70em 0.80em;
     position: fixed;
     top: 0;
-    
+
 }
 
 input[type=text] {
@@ -35,19 +34,17 @@ input[type=text]:focus {
     background-color: rgb(241, 241, 241);
     border: 3px solid #2f63bd;
 }
-.lego_img
-{
+
+.lego_img {
     height: 8em;
     padding: 0.5em;
 }
 
-#header_column
-{   
+#header_column {
     text-align: center;
 }
 
-#right_header_column
-{
+#right_header_column {
     text-align: right;
     margin: 0;
     padding: 0;
@@ -56,32 +53,29 @@ input[type=text]:focus {
 #sets_table {
     margin: auto;
     table-layout: fixed;
-    height: 40em;
     margin-top: 15em;
-    border-spacing:0 15px; 
+    border-spacing: 0 15px;
 }
 
-.sets_img
-{
+.sets_img {
     max-width: 10em;
     max-height: 10em;
     object-fit: contain;
     border: solid black;
     background-color: white;
     border-radius: 0.4em;
-    
+
 }
 
-.sets_rows
-{
+.sets_rows {
     border-radius: 1em;
-    padding-bottom: 1em; 
-    background-color:  rgb(255, 207, 0);
+    padding-bottom: 1em;
+    background-color: rgb(255, 207, 0);
     box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
+    height: 10em;
 }
 
-.sets_rows:hover
-{
+.sets_rows:hover {
     cursor: pointer;
     color: #2f63bd;
     border-color: rgb(255, 0, 0);
@@ -105,18 +99,19 @@ input[type=text]:focus {
     border-radius: 0 1em 1em 0;
     border: solid #b39100;
     border-left-width: 0;
+    height: 10em;
 }
-.sets_info_header
-{
+
+.sets_info_header {
     font-family: sans-serif;
-    font-size:x-large;
+    font-size: x-large;
     font-weight: bold;
 }
-.sets_info_text
-{
+
+.sets_info_text {
     white-space: pre-line;
     font-family: sans-serif;
-    line-height: 1.2em;   
+    line-height: 1.2em;
     text-align: top;
 }
 
@@ -126,81 +121,11 @@ hr {
     border: none;
 }
 
-.info_id
-{
-   height: 1.5em; 
-   font-weight: bold;
-}
-
-
-/* Modal */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 100px;
-    /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-}
-
-
-.modal-content {
-    position: relative;
-    background-color: #ffffff;
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    width: 80%;
-    height: 80%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-    display: block;
-    overflow-y: scroll;
-}
-
-.modal-header{
-    text-align: right;
-    font-style:unset;
-    margin-right: 3em;
-}
-
-/* The Close Button */
-#close {
-    color: rgb(0, 0, 0);
-    font-size: 4em;
+.info_id {
+    height: 1.5em;
     font-weight: bold;
-    position: fixed;
-    size: 20em;
 }
 
-#close:hover,
-#close:focus {
-    color: rgb(255, 0, 0);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-#loading {
-    text-align: center;
-    padding-top: 25%;
-    font-size: 8em;
-}
 
 /*https://www.w3schools.com/howto/howto_js_autocomplete.asp*/
 
@@ -237,50 +162,115 @@ hr {
     color: #ffffff;
 }
 
-h1 {
-    margin: auto;
-
-}
-
-/*
-
-/*Breadcrums*/
-ul.breadcrumb {
-    width: 100%;
-    list-style: none;
-    color: rgb(255, 207, 0);
+.modal {
+    display: none;
+    /* Hidden by default */
     position: fixed;
-    top: 16vh;
-    left: 0vw;
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
 
-ul.breadcrumb li {
-    display: inline;
-    font-size: 18px;
+
+.modal-content {
+    position: relative;
+    background-color: #ffffff;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80em;
+    height: 50em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    display: block;
+    overflow-y: scroll;
+    border: solid #b39100;
+    border-radius: 1em;
 }
 
-ul.breadcrumb li+li:before {
-    padding: 8px;
-    color: white;
-    content: "/\00a0";
+.flexbox-container-header {
+    display: flex;
+    margin: 3em 1em 1em;
 }
 
-ul.breadcrumb li a {
-    color: white;
+.modal-header-text {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: sans-serif;
+}
+
+.flex-element-header {
+    margin-left: 2em;
+}
+
+.modal-header-info-text {
+    font-family: sans-serif;
+}
+
+.flexboxContainer {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    /* center items vertically, in this case */
+    align-items: center;
+    /* center items horizontally, in this case */
+}
+
+.flex-element {
+    margin: 1em;
+    padding: 1em;
+    width: 15em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.modal-text {
+    margin-bottom: 0;
+}
+
+#close {
+    color: rgb(0, 0, 0);
+    font-size: 4em;
+    font-weight: bold;
+    position: fixed;
+    size: 20em;
+}
+
+#close:hover,
+#close:focus {
+    color: rgb(255, 0, 0);
     text-decoration: none;
+    cursor: pointer;
 }
 
-ul.breadcrumb li a:hover {
-    color: rgb(255, 207, 0);
-    text-decoration: underline;
+#loading {
+    text-align: center;
+    padding-top: 25%;
+    font-size: 8em;
 }
 
 /* custom scrollbar */
 ::-webkit-scrollbar {
     width: 20px;
     background-color: #ccc;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-top-right-radius: 0.8em;
+    border-bottom-right-radius: 0.8em;
 }
 
 ::-webkit-scrollbar-thumb {
