@@ -12,7 +12,6 @@
     background-color: rgb(255, 207, 0);
     box-shadow: black;
     width:100%;
-    height: 20%;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.3) 0.70em 0.8em 0.70em 0.80em;
     position: fixed;
@@ -57,7 +56,6 @@ input[type=text]:focus {
 #sets_table {
     margin: auto;
     table-layout: fixed;
-    height: 40em;
     margin-top: 15em;
     border-spacing:0 15px; 
 }
@@ -79,8 +77,7 @@ input[type=text]:focus {
     padding-bottom: 1em; 
     background-color:  rgb(255, 207, 0);
     box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
-    
-    
+    height: 10em;
 }
 
 .sets_img_td {
@@ -101,6 +98,7 @@ input[type=text]:focus {
     border-radius: 0 1em 1em 0;
     border: solid #b39100;
     border-left-width: 0;
+    height: 10em;
 }
 .sets_info_header
 {
@@ -128,8 +126,42 @@ hr {
    font-weight: bold;
 }
 
-/* Modal */
-.modal {
+
+/*https://www.w3schools.com/howto/howto_js_autocomplete.asp*/
+
+.autocomplete {
+    position: relative;
+    display: inline-block;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; 
+    border-bottom: 1px solid #d4d4d4; 
+}
+.autocomplete-items div:hover {
+    background-color: rgb(241, 241, 241);
+}
+  
+.autocomplete-active {
+    background-color: DodgerBlue !important; 
+    color: #ffffff; 
+  }
+
+  .modal {
     display: none; /* Hidden by default */
     position: fixed;
     /* Stay in place */
@@ -158,8 +190,8 @@ hr {
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 80%;
-    height: 80%;
+    width: 80em;
+    height: 50em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -167,6 +199,46 @@ hr {
     animation-duration: 0.4s;
     display: block;
     overflow-y: scroll;
+    border: solid #b39100;
+    border-radius: 1em;
+}
+.flexbox-container-header
+{
+    display: flex;  
+    margin: 3em 1em 1em; 
+}
+.modal-header-text
+{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: sans-serif;
+}
+.flex-element-header 
+{
+    margin-left: 2em;
+}
+.modal-header-info-text
+{
+    font-family: sans-serif;
+}
+
+.flexboxContainer {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;     /* center items horizontally, in this case */
+}
+
+.flex-element {
+    margin: 1em;
+    padding: 1em;
+    width: 15em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.modal-text {
+    margin-bottom: 0;
 }
 
 /* The Close Button */
@@ -185,87 +257,12 @@ hr {
     cursor: pointer;
 }
 
-
-
-/*https://www.w3schools.com/howto/howto_js_autocomplete.asp*/
-
-.autocomplete {
-    position: relative;
-    display: inline-block;
-}
-
-.autocomplete-items {
-    position: absolute;
-    border: 1px solid #d4d4d4;
-    border-bottom: none;
-    border-top: none;
-    z-index: 99;
-    /*position the autocomplete items to be the same width as the container:*/
-    top: 100%;
-    left: 0;
-    right: 0;
-}
-
-.autocomplete-items div {
-    padding: 10px;
-    cursor: pointer;
-    background-color: #fff;
-    border-bottom: 1px solid #d4d4d4;
-}
-
-.autocomplete-items div:hover {
-    background-color: rgb(241, 241, 241);
-}
-
-.autocomplete-active {
-    background-color: DodgerBlue !important;
-    color: #ffffff;
-}
-
-h1 {
-    margin: auto;
-
-}
-
-/*
-
-/*Breadcrums*/
-ul.breadcrumb {
-    width: 100%;
-    list-style: none;
-    color: rgb(255, 207, 0);
-    position: fixed;
-    top: 16vh;
-    left: 0vw;
-}
-
-ul.breadcrumb li {
-    display: inline;
-    font-size: 18px;
-}
-
-ul.breadcrumb li+li:before {
-    padding: 8px;
-    color: white;
-    content: "/\00a0";
-}
-
-ul.breadcrumb li a {
-    color: white;
-    text-decoration: none;
-}
-
-ul.breadcrumb li a:hover {
-    color: rgb(255, 207, 0);
-    text-decoration: underline;
-}
-
 /* custom scrollbar */
 ::-webkit-scrollbar {
     width: 20px;
     background-color: #ccc;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-top-right-radius: 0.8em;
+    border-bottom-right-radius: 0.8em;
 }
 
 ::-webkit-scrollbar-thumb {
