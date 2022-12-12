@@ -7,14 +7,25 @@ function autocomplete(inp) {
     loadParts();
     console.log("this.value: " + inp.value + " e: " + e.data);
   });
-
   function loadParts() {
+    let searchValue = search_bar.value;
+    // regex pattern to match numbers and characters not separated by a space
+    const pattern = /([a-zA-Z])(\d)|(\d)([a-zA-Z])/;
+    // replace instances of pattern with a space between the number and character
+    searchValue = searchValue.replace(pattern, '$1 $2');
+    
+    // regex pattern to match numbers followed by "x" and another optional number
+    const xPattern = /(\d)x(\d)?/g;
+    // replace instances of pattern with a space between the numbers and "x" surrounded by spaces
+    searchValue = searchValue.replace(xPattern, '$1 x $2');
+    
     const xhttp = new XMLHttpRequest();
     xhttp.open("POST", "get_parts.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    let post = "text=" + search_bar.value;
+    let post = "text=" + searchValue;
+    console.log(searchValue);
     xhttp.send(post);
-
+    
     xhttp.onload = function () {
       //document.getElementById("sets_table").innerHTML = this.responseText;
       //console.log("get parts loaded!: " + this.responseText);
