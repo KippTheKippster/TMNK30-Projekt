@@ -193,7 +193,7 @@ function openModal() {
 
 function closeModal() {
   modal.style.display = "none";
-  modalBody.innerHTML = "<h1 id='loading'>Loading...<h1>";
+  modalBody.innerHTML = "<h1 class='loading'>loading...<h1>";
   console.log("Closing modal...");
 }
 

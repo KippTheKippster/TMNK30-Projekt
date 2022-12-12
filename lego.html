@@ -10,22 +10,19 @@
 
 
 <body id="website_body">
-    <table id="website_header">
-        <tr>
-            <td>
+    <div id="website_header">
             <img src="images/lego_logo.png" alt="lego_logo" class="lego_img">
-            </td>
-            <td id="header_column">
+            <div id="header_column">
+                <h2>The BlockBusiness</h2>
                 <div class="autocomplete">
-                    <form><input type="text" id="search_bar" placeholder="Search piece.." autocomplete="off">
+                    <form><input type="text" id="search_bar" placeholder="Search piece..." autocomplete="off">
                     </form>
                 </div>
-            </td>
-            <td id="right_header_column">
+            </div>
+            <div id="right_header_column">
                 <img src="images/lego_gubbe.png" alt="lego_gubbe" class="lego_img">
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
 
     <!--<ul class="breadcrumb">
         <li><a href="lego.html">Home</a></li>
@@ -33,30 +30,34 @@
         <li><a href="#">1 x 1</a></li>
         <li>Yellow</li>
     </ul>-->
-
-    <div>
-        <table id="sets_table">
-            <tr class="sets_rows go_to_set_info">
-                <td class="sets_img_td"><img src="images/lego_gubbe.png" alt="" class="sets_img"></td>
-                <td class="sets_info_td">                 
-                    <span class="sets_info_header">LEGOCITY 60330 Sjukhus</span>
-                    <hr>
-                    <div class="sets_info_text"><span class="info_id">ID:</span> 
-                        <span class="id_number">3241-1</span>
-                        <span class="info_id">Year:</span> 1643
-                        Your piece is included in these colors:
-                        
-                    </div>       
-                </td>
-            </tr>
-        </table>
+    <div id="spacer"></div>
+    <div id="sets_table">
+        <div class="sets_rows go_to_set_info">
+            <!--Kanske tar bort lego gubbe-->
+            <div class="sets_img_td"><img src="images/lego_gubbe.png" alt="" class="sets_img"></div>
+            <div class="sets_info_td">                 
+                <span class="sets_info_header">LEGOCITY 60330 Sjukhus</span>
+                <hr>
+                <div class="sets_info_text"><span class="info_id">ID: </span><span class="id_number">3241-1</span>
+                    <span class="info_id">Year: </span><span class="id_number">1643</span>
+                    <span class="id_number">Your piece is included in these colors:</span>
+                    <div class="brick-colors-container">
+                        <div class="brick-colors"><span class="brick-colors-text">10</span>
+                        </div>
+                        <div class="brick-colors"></div>
+                        <div class="brick-colors"></div>
+                        <div class="brick-colors"></div>
+                    </div>
+                </div>       
+            </div>
+        </div>
     </div>
 
     <div id="modal" class="modal">
         <!-- Modal content -->
         <div class="modal-content" id="modal-content">
             <div class="modal-header">
-                <span id="close">&times;</span>
+                <div id="close-spacer"><span id="close">&times;</span></div>
             </div>
             <div id="modal-body">
                 <p>Some text in the Modal Body</p>

@@ -8,14 +8,16 @@
 }
 
 #website_header {
+    display: flex;
     background-color: rgb(255, 207, 0);
     box-shadow: black;
     width: 100%;
-    border: none;
     box-shadow: rgba(0, 0, 0, 0.3) 0.70em 0.8em 0.70em 0.80em;
     position: fixed;
-    top: 0;
+}
 
+#search_bar {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 input[type=text] {
@@ -50,11 +52,8 @@ input[type=text]:focus {
     padding: 0;
 }
 
-#sets_table {
-    margin: auto;
-    table-layout: fixed;
-    margin-top: 15em;
-    border-spacing: 0 15px;
+#spacer {
+    height: 15em;
 }
 
 .sets_img {
@@ -68,49 +67,46 @@ input[type=text]:focus {
 }
 
 .sets_rows {
+    margin: auto;
+    margin-bottom: 1em;
     border-radius: 1em;
-    padding-bottom: 1em;
     background-color: rgb(255, 207, 0);
     box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
-    height: 10em;
+    display: flex;
+    border-radius: 0.5em;
+    border: solid #b39100;
+    width: 60em;
+    height: 12.5em;
 }
 
 .sets_rows:hover {
     cursor: pointer;
-    color: #2f63bd;
-    border-color: rgb(255, 0, 0);
+    border-color: rgb(208, 16, 18);
+    color: rgb(208, 16, 18);
 }
 
 .sets_img_td {
     padding: 1em;
     text-align: center;
-    width: 10em;
-    height: 10em;
-    border-radius: 1em 0 0 1em;
-    border: solid #b39100;
-    border-right-width: 0;
-
+    width: 12em;
 }
 
 .sets_info_td {
     padding: 1em;
     width: 50em;
     vertical-align: text-top;
-    border-radius: 0 1em 1em 0;
-    border: solid #b39100;
-    border-left-width: 0;
-    height: 10em;
+
 }
 
 .sets_info_header {
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: x-large;
-    font-weight: bold;
+    text-transform: capitalize;
 }
 
 .sets_info_text {
     white-space: pre-line;
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.2em;
     text-align: top;
 }
@@ -124,6 +120,34 @@ hr {
 .info_id {
     height: 1.5em;
     font-weight: bold;
+    margin-bottom: 0.5em;
+    color: black;
+}
+
+.id_number {
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.brick-colors-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.brick-colors {
+    height: 1.5em;
+    width: 1.5em;
+    background-color: rgb(208, 16, 18);
+    border: 0.15em black solid;
+    border-radius: 0.2em;
+    margin-right: 2em;
+    margin-top: 0.6em;
+    text-align: center;
+}
+
+.brick-colors-text {
+    color: white;
+    font-family:monospace;
 }
 
 
@@ -190,7 +214,6 @@ hr {
     background-color: #ffffff;
     margin: auto;
     padding: 0;
-    border: 1px solid #888;
     width: 80em;
     height: 50em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -201,7 +224,7 @@ hr {
     display: block;
     overflow-y: scroll;
     border: solid #b39100;
-    border-radius: 1em;
+    border-radius: 0.2em;
 }
 
 .flexbox-container-header {
@@ -212,7 +235,7 @@ hr {
 .modal-header-text {
     margin-top: 0;
     margin-bottom: 0;
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .flex-element-header {
@@ -220,7 +243,7 @@ hr {
 }
 
 .modal-header-info-text {
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .flexboxContainer {
@@ -242,14 +265,20 @@ hr {
 
 .modal-text {
     margin-bottom: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#close-spacer
+{
+    float:right;
+    width: 3.5em;
+
 }
 
 #close {
     color: rgb(0, 0, 0);
     font-size: 4em;
     font-weight: bold;
-    position: fixed;
-    size: 20em;
+    position: fixed; 
 }
 
 #close:hover,
@@ -259,18 +288,31 @@ hr {
     cursor: pointer;
 }
 
-#loading {
+.loading {
     text-align: center;
-    padding-top: 25%;
-    font-size: 8em;
+    font-size: 2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 5em;
+}
+
+.load-fail {
+    text-align: center;
+    background-color: white;
+    width: 30em;
+    height: 30em;
+    margin: auto;
+    border: solid #b39100;
+    border-radius: 0.2em;
+}
+.load-fail-text {
+    font-size: 2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /* custom scrollbar */
 ::-webkit-scrollbar {
     width: 20px;
     background-color: #ccc;
-    border-top-right-radius: 0.8em;
-    border-bottom-right-radius: 0.8em;
 }
 
 ::-webkit-scrollbar-thumb {
