@@ -13,7 +13,6 @@ function autocomplete(inp) {
     xhttp.open("POST", "get_parts.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     let post = "text=" + search_bar.value;
-    console.log(search_bar.value);
     xhttp.send(post);
 
     xhttp.onload = function () {
@@ -49,11 +48,13 @@ function autocomplete(inp) {
       b.innerHTML = "<strong>" + parts[i].substr(0, val.length) + "</strong>";
       b.innerHTML += parts[i].substr(val.length);
       /*insert a input field that will hold the current array item's value:*/
-      b.innerHTML += "<input type='hidden' value='" + parts[i] + "'>";
+      b.innerHTML += "<input type='hidden' value=\"" + parts[i] + "\">";
       /*execute a function when someone clicks on the item value (DIV element):*/
       b.addEventListener("click", function (e) {
         /*insert the value for the autocomplete text field:*/
-        inp.value = this.getElementsByTagName("input")[0].value;
+        const input = this.getElementsByTagName("input")[0].value;
+        inp.value = input;
+
         /*close the list of autocompleted values,
         (or any other open lists of autocompleted values:*/
         closeAllLists();
@@ -70,11 +71,13 @@ function autocomplete(inp) {
     xhttp.open("POST", "get_sets.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     let post = "text=" + search_bar.value;
+    console.log("Searching for: " + search_bar.value);
     console.log(search_bar.value);
     xhttp.send(post);
 
     xhttp.onload = function () {
       document.getElementById("sets_table").innerHTML = this.responseText;
+      setColor();
       connectGoToSetInfo();
     }
   }
@@ -180,7 +183,10 @@ autocomplete(search_bar);
 //Modal
 const modal = document.getElementById("modal");
 const modalBody = document.getElementById("modal-body");
+const modalContent = document.getElementById("modal-content");
 const modalClose = document.getElementById("close");
+let mouseOverModal = false;
+let modalLoading = false;
 
 closeModal();
 
@@ -189,11 +195,32 @@ connectGoToSetInfo();
 
 function openModal() {
   modal.style.display = "block";
+  modalContent.addEventListener("mouseleave", function(event){
+    mouseOverModal = false;
+    console.log(mouseOverModal);
+  });
+
+  modalContent.addEventListener("mouseover", function(event){
+    mouseOverModal = true;
+    console.log(mouseOverModal);
+  });
+
+  modal.addEventListener("click", function(event){
+    if (mouseOverModal == false)
+    {
+      closeModal();
+    }
+  });
 }
 
 function closeModal() {
+  if (modalLoading == true)
+  {
+    return;
+  }
+  
   modal.style.display = "none";
-  modalBody.innerHTML = "<h1 class='loading'>loading...<h1>";
+  modalBody.innerHTML = "<h1 class='loading'>Loading...<h1>";
   console.log("Closing modal...");
 }
 
@@ -204,9 +231,11 @@ function loadModal(setID) {
   let post = "id=" + setID;
   console.log(search_bar.value);
   xhttp.send(post);
+  modalLoading = true;
 
   xhttp.onload = function () {
     modalBody.innerHTML = this.responseText;
+    modalLoading = false;
   }
 }
 
@@ -221,5 +250,44 @@ function connectGoToSetInfo() {
       loadModal(id);
     });
   }
+}
 
+function setColor() {
+  const colors = document.getElementsByClassName("brick-colors-text");
+
+  for (let i = 0; i < colors.length; i++) {
+    console.log("Classlist: " + colors[i].classList);
+    const colorHex = '#' + colors[i].classList[0];
+    colors[i].parentElement.style.backgroundColor = colorHex;
+    colors[i].style.color = getContrastColor(colorHex);
+  }
+}
+
+function getContrastColor(hex) 
+{
+  //Checks if the first character is a '#', if that is the case then remove it
+  if (hex.indexOf('#') === 0) 
+  {
+    hex = hex.slice(1);
+  }
+  //Converts 3-digit hex code to 6-digits
+  if (hex.length === 3) {
+    hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+  }
+
+  //Makes sure the length of the hex code is valid
+  if (hex.length !== 6) {
+    throw new Error('Invalid HEX color.');
+  }
+
+  //Transforms the hex values to regular ints
+  var 
+    r = parseInt(hex.slice(0, 2), 16),
+    g = parseInt(hex.slice(2, 4), 16),
+    b = parseInt(hex.slice(4, 6), 16);
+
+  //Chooses between if the most contrasting color is black or white.
+  return (r * 0.299 + g * 0.587 + b * 0.114) > 186
+    ? '#000000'
+    : '#FFFFFF';
 }
