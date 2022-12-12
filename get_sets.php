@@ -8,13 +8,21 @@
     }
 
     
-    $result = mysqli_query($connection, "SELECT * FROM parts, images WHERE parts.Partname = '$part_name' AND parts.PartID = images.ItemID");
-    PrintPart($result);
+    $part_result = mysqli_query($connection, "SELECT * FROM parts, images WHERE parts.Partname = '$part_name' AND parts.PartID = images.ItemID");
 
     $condition = "parts.Partname = '$part_name' AND parts.PartID = inventory.ItemID AND inventory.SetID = sets.SetID AND sets.SetID = images.ItemID AND inventory.ColorID = colors.ColorID";
     $query="SELECT * FROM parts, inventory, sets, images, colors WHERE " . $condition . " LIMIT 2000";
-    $result = mysqli_query($connection, $query);
-    PrintAllSets($result);
+    $set_result = mysqli_query($connection, $query);
+
+    if (empty(mysqli_fetch_array($set_result)))
+    {
+        PrintError();
+    }
+    else
+    {
+        PrintPart($part_result);
+        PrintAllSets($set_result);
+    }
 
     function PrintPart($data)
     {
@@ -72,39 +80,12 @@
 
             //PrintSet($source, $row[Setname], $row[SetID], $row[Year]);
         }  
-
-        if ($i == 0)
-        {
-            print("<div class='load-fail'><span class='load-fail-text'>Failed To Load!</span></div>");
-        }
-        else
-        {
-            PrintSet($source, $set_name, $set_id, $year, $colors);
-        }
-
+        
+        PrintSet($source, $set_name, $set_id, $year, $colors);
     }
 
     function PrintSet($source, $set_name, $set_id, $year, $colors)
-    {
-        /*
-        print("
-        <tr class='sets_rows go_to_set_info'>
-            <td class='sets_img_td'><img src='$source' alt='$source' class='sets_img'></td>
-            <td class='sets_info_td'>
-                <span class='sets_info_header'>$set_name</span>
-                <hr>
-                <div class='sets_info_text'><span class='info_id'>ID:</span> 
-                    <span class='id_number'>$set_id</span>
-                    <span class='info_id'>Year:</span> $year
-                    Your piece is included in these colors:
-                </div>  
-                <div class='brick-colors-container'>
-                    $colors
-                </div>
-            </td>     
-        </tr>");*/
-
-        
+    {   
         print("
         <div class='sets_rows go_to_set_info'>
             <div class='sets_img_td'><img src='$source' alt='failed' class='sets_img'></div>
@@ -120,6 +101,11 @@
                 </div>
             </div>     
         </div>");
+    }
+    
+    function PrintError()
+    {
+        print("<div class='load-fail'><span class='load-fail-text'>Failed To Load!</span></div>");
     }
 
     function GetFileType($row, $set)
