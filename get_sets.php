@@ -11,7 +11,7 @@
     $part_result = mysqli_query($connection, "SELECT * FROM parts, images WHERE parts.Partname = '$part_name' AND parts.PartID = images.ItemID");
 
     $condition = "parts.Partname = '$part_name' AND parts.PartID = inventory.ItemID AND inventory.SetID = sets.SetID AND sets.SetID = images.ItemID AND inventory.ColorID = colors.ColorID";
-    $query="SELECT * FROM parts, inventory, sets, images, colors WHERE " . $condition . " LIMIT 2000";
+    $query="SELECT * FROM parts, inventory, sets, images, colors WHERE " . $condition . " ORDER BY inventory.Quantity DESC LIMIT 2000";
     $set_result = mysqli_query($connection, $query);
 
     if (empty(mysqli_fetch_array($set_result)))
