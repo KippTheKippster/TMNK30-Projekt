@@ -1,0 +1,362 @@
+#website_body {
+    background-image: url("images/lego_base.png");
+    background-repeat: repeat;
+    background-size: 2em;
+    background-attachment: fixed;
+    padding: 0;
+    margin: 0;
+}
+
+#website_header {
+    display: flex;
+    background-color: rgb(255, 207, 0);
+    box-shadow: black;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0.70em 0.8em 0.70em 0.80em;
+    position: fixed;
+    justify-content:center;
+
+}
+#titlecard
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: xx-large;
+    margin: 0.5em;
+}
+
+#search_bar {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input[type=text] {
+    width: 40em;
+    padding: 12px 20px;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 1em;
+    background-color: white;
+    color: black;
+}
+
+input[type=text]:focus {
+    background-color: rgb(241, 241, 241);
+    border: 3px solid #2f63bd;
+}
+
+.lego_img {
+    height: 8em;
+    padding: 0.5em;
+
+    margin-left: 0;
+    
+}
+
+#header_column {
+    text-align: center;
+}
+
+#right_header_column {
+    text-align: right;
+    margin: 0;
+    padding: 0;
+}
+
+#spacer {
+    height: 14em;
+}
+
+.sets_img {
+    max-width: 10em;
+    max-height: 10em;
+    object-fit: contain;
+    border: solid black;
+    background-color: white;
+    border-radius: 0.4em;
+    box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
+}
+.sets_img-query {
+    margin: auto;
+    max-width: 10em; 
+    margin-bottom: 0.5em; 
+}
+.sets_img-query-text {
+
+    text-align: center;
+    margin-bottom: 1.3em;
+
+}
+.search-query-text
+{
+    text-align: center;
+    font-size: larger;
+    background-color: rgb(255, 207, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+    padding: 0.3em;
+
+    border: solid #b39100;
+    border-radius: 0.4em;
+    box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
+}
+
+.sets_rows {
+    margin: auto;
+    margin-bottom: 1em;
+    border-radius: 1em;
+    background-color: rgb(255, 207, 0);
+    box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
+    display: flex;
+    border-radius: 0.5em;
+    border: solid #b39100;
+    width: 60em;
+    height: 12.5em;
+}
+
+.sets_rows:hover {
+    cursor: pointer;
+    border-color: rgb(208, 16, 18);
+    color: rgb(208, 16, 18);
+}
+
+.sets_img_td {
+    padding: 1em;
+    text-align: center;
+    width: 12em;
+}
+
+.sets_info_td {
+    padding: 1em;
+    width: 50em;
+    vertical-align: text-top;
+
+}
+
+.sets_info_header {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-large;
+    text-transform: capitalize;
+}
+
+.sets_info_text {
+    white-space: pre-line;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.2em;
+    text-align: top;
+}
+
+hr {
+    height: 0.15em;
+    background-color: black;
+    border: none;
+}
+
+.info_id {
+    height: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    color: black;
+}
+
+.id_number {
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.brick-colors-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.brick-colors {
+    height: 1.5em;
+    width: 1.5em;
+    background-color: rgb(208, 16, 18);
+    border: 0.15em black solid;
+    border-radius: 0.2em;
+    margin-right: 2em;
+    margin-top: 0.6em;
+    text-align: center;
+}
+
+.brick-colors-text {
+    color: white;
+    font-family:monospace;
+}
+
+
+/*https://www.w3schools.com/howto/howto_js_autocomplete.asp*/
+
+.autocomplete {
+    position: relative;
+    display: inline-block;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
+    background-color: rgb(241, 241, 241);
+}
+
+.autocomplete-active {
+    background-color: #2f63bd !important;
+    color: #ffffff;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+.modal-content {
+    position: relative;
+    background-color: #ffffff;
+    margin: auto;
+    padding: 0;
+    width: 80em;
+    height: 50em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    display: block;
+    overflow-y: scroll;
+    border: solid #b39100;
+    border-radius: 0.2em;
+}
+
+.flexbox-container-header {
+    display: flex;
+    margin: 3em 1em 1em;
+}
+
+.modal-header-text {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.flex-element-header {
+    margin-left: 2em;
+}
+
+.modal-header-info-text {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.flexboxContainer {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    /* center items vertically, in this case */
+    align-items: center;
+    /* center items horizontally, in this case */
+}
+
+.flex-element {
+    margin: 1em;
+    padding: 1em;
+    width: 15em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.modal-text {
+    margin-bottom: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#close-spacer
+{
+    float:right;
+    width: 3.5em;
+
+}
+
+#close {
+    color: rgb(0, 0, 0);
+    font-size: 4em;
+    font-weight: bold;
+    position: fixed; 
+}
+
+#close:hover,
+#close:focus {
+    color: rgb(255, 0, 0);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.loading {
+    text-align: center;
+    font-size: 2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 5em;
+}
+
+.load-fail {
+    text-align: center;
+    background-color: white;
+    width: 30em;
+    height: 30em;
+    margin: auto;
+    border: solid #b39100;
+    border-radius: 0.2em;
+}
+.load-fail-text {
+    font-size: 2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 20px;
+    background-color: #ccc;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(73, 73, 73);
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: white;
+}
