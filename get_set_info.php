@@ -15,7 +15,7 @@
     "SELECT inventory.ItemtypeID, inventory.ItemID, inventory.Quantity, sets.Setname, sets.SetID, sets.Year, inventory.ColorID, images.has_gif, images.has_largejpg, images.has_largegif, parts.Partname, colors.Colorname
     FROM sets, parts, inventory, images, colors 
     WHERE sets.SetID = '$set_id' AND sets.SetID = inventory.SetID AND inventory.ItemID = parts.PartID AND inventory.ItemID = images.ItemID AND inventory.ColorID = images.ColorID AND inventory.ColorID = colors.ColorID
-     LIMIT 3000");
+    ORDER BY inventory.Quantity DESC LIMIT 3000");
 
     PrintParts($result);
 
