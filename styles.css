@@ -14,6 +14,14 @@
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.3) 0.70em 0.8em 0.70em 0.80em;
     position: fixed;
+    justify-content:center;
+
+}
+#titlecard
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: xx-large;
+    margin: 0.5em;
 }
 
 #search_bar {
@@ -40,6 +48,9 @@ input[type=text]:focus {
 .lego_img {
     height: 8em;
     padding: 0.5em;
+
+    margin-left: 0;
+    
 }
 
 #header_column {
@@ -53,7 +64,7 @@ input[type=text]:focus {
 }
 
 #spacer {
-    height: 15em;
+    height: 14em;
 }
 
 .sets_img {
@@ -63,7 +74,31 @@ input[type=text]:focus {
     border: solid black;
     background-color: white;
     border-radius: 0.4em;
+    box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
+}
+.sets_img-query {
+    margin: auto;
+    max-width: 10em; 
+    margin-bottom: 0.5em; 
+}
+.sets_img-query-text {
 
+    text-align: center;
+    margin-bottom: 1.3em;
+
+}
+.search-query-text
+{
+    text-align: center;
+    font-size: larger;
+    background-color: rgb(255, 207, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+    padding: 0.3em;
+
+    border: solid #b39100;
+    border-radius: 0.4em;
+    box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
 }
 
 .sets_rows {

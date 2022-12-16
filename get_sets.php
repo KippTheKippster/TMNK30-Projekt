@@ -11,7 +11,7 @@
     $part_result = mysqli_query($connection, "SELECT * FROM parts, images WHERE parts.Partname = '$part_name' AND parts.PartID = images.ItemID");
 
     $condition = "parts.Partname = '$part_name' AND parts.PartID = inventory.ItemID AND inventory.SetID = sets.SetID AND sets.SetID = images.ItemID AND inventory.ColorID = colors.ColorID";
-    $query="SELECT * FROM parts, inventory, sets, images, colors WHERE " . $condition . " ORDER BY inventory.Quantity DESC LIMIT 2000";
+    $query="SELECT * FROM parts, inventory, sets, images, colors WHERE " . $condition . " LIMIT 2000";
     $set_result = mysqli_query($connection, $query);
 
     if (empty(mysqli_fetch_array($set_result)))
@@ -33,8 +33,8 @@
         $fileName = "$type[1]/$row[PartID].$type[0]";
         $source = "$filePath$fileName";
 
-        print("<p> You are searching for: $row[Partname]</p>");
-        print("<img src='$source' alt='$source' class='sets_img'>");
+        print("<div class='sets_img-query-text'><span class='search-query-text'> You are searching for: $row[Partname]</span></div>");
+        print("<div class='sets_img-query'><img src='$source' alt='$source' class='sets_img'></div>");
         //print("")
     }
 
