@@ -201,11 +201,17 @@ const modal = document.getElementById("modal");
 const modalBody = document.getElementById("modal-body");
 const modalContent = document.getElementById("modal-content");
 const modalClose = document.getElementById("close");
+const startLink = document.getElementById("start-row");
 let mouseOverModal = false;
 let modalLoading = false;
 
 closeModal();
+function refresh()
+{
+  location.reload();
+}
 
+startLink.addEventListener("click", refresh);
 modalClose.addEventListener("click", closeModal);
 connectGoToSetInfo();
 

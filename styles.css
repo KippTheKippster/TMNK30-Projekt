@@ -79,7 +79,8 @@ input[type=text]:focus {
 .sets_img-query {
     margin: auto;
     max-width: 10em; 
-    margin-bottom: 0.5em; 
+    margin-bottom: 0.5em;
+    text-align: center;
 }
 .sets_img-query-text {
 
