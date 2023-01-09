@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Lego Website</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+
+
+<body id="website_body">
+    <div id="website_header">
+        <a href="lego.html"><img src="images/lego_logo.png" alt="lego_logo" class="lego_img"></a>
+        <div id="header_column">
+            <h2 id="titlecard">The BlockBusiness</h2>
+            <div class="autocomplete">
+                <form><input type="text" id="search_bar" placeholder="Search piece..." autocomplete="off">
+                </form>
+            </div>
+        </div>
+        <div id="right_header_column">
+            <img src="images/lego_gubbe.png" alt="lego_gubbe" class="lego_img">
+        </div>
+    </div>
+
+    <div id="spacer"></div>
+    <div id="sets_table">
+        <div class="sets_rows" id="start-row">
+            <div class="sets_img_td"><img src="images/lego_search.png" alt="" class="sets_img"></div>
+            <div class="sets_info_td">                 
+                <span class="sets_info_header">Welcome!</span> 
+                <hr>
+                <div class="sets_info_text"><span class="info_id">Search for a piece, then find all lego sets that has that piece in it as well as how many! </span>
+                </div>
+                <br><div class="sets_info_text"><span class="info_id">Then you can click on a set to find all lego pieces it has! </span></br>
+                </div>
+            </div>       
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content" id="modal-content">
+            <div class="modal-header">
+                <div id="close-spacer"><span id="close">&times;</span></div>
+            </div>
+            <div id="modal-body">
+                <p>Some text in the Modal Body</p>
+                <p>Some other text...</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
