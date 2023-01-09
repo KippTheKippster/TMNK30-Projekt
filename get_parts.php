@@ -1,7 +1,7 @@
 <?php
     $search_name = $_POST[text];
     $connection = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
-    $result = mysqli_query($connection, "SELECT Partname FROM parts WHERE Partname LIKE '%$search_name%' LIMIT 300");
+    $result = mysqli_query($connection, "SELECT Partname FROM parts WHERE Partname LIKE '%$search_name%' LIMIT 30");
 
     //OR PartID = '$search_name'
 

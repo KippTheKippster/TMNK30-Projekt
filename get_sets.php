@@ -14,7 +14,7 @@
     $query="SELECT * FROM parts, inventory, sets, images, colors WHERE " . $condition . " ORDER BY inventory.Quantity DESC LIMIT 2000";
     $set_result = mysqli_query($connection, $query);
 
-    if (empty(mysqli_fetch_array($set_result)))
+    if (empty($set_result))
     {
         PrintError();
     }
@@ -51,7 +51,7 @@
         $colors = "";
 
         while ($row = mysqli_fetch_array($data))
-        {   
+        {
             if ($old_id == $row[SetID])
             {
                 $colors .= 
@@ -76,11 +76,12 @@
             $set_name = $row[Setname];
             $set_id = $row[SetID];
             $year = $row[Year];
-            $colors = "<div class='brick-colors'><span class='$row[ColorRGB] brick-colors-text'>$row[Quantity]</span></div>";
-
-            //PrintSet($source, $row[Setname], $row[SetID], $row[Year]);
+            $colors = 
+            "<div class='brick-colors'>
+                <span class='$row[ColorRGB] brick-colors-text'>$row[Quantity]</span>
+            </div>";
         }  
-        
+
         PrintSet($source, $set_name, $set_id, $year, $colors);
     }
 
@@ -139,9 +140,5 @@
         array_push($type_array, $sizeType);
 
         return $type_array;
-        
-
-        //$a = array("a");
-       // return $a;
     }
 ?>

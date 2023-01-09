@@ -1,4 +1,3 @@
-
 function autocomplete(inp) {
   var currentFocus;
   /*execute a function when someone writes in the text field:*/
@@ -45,8 +44,9 @@ function autocomplete(inp) {
       /*create a DIV element for each matching element:*/
       b = document.createElement("DIV");
       /*make the matching letters bold:*/
-      b.innerHTML = "<strong>" + parts[i].substr(0, val.length) + "</strong>";
-      b.innerHTML += parts[i].substr(val.length);
+      //b.innerHTML = "<strong>" + parts[i].substr(0, val.length) + "</strong>";
+      //b.innerHTML += parts[i].substr(val.length);
+      b.innerHTML = makeMatchingBold(parts[i], addWhiteSpaces(val));
       /*insert a input field that will hold the current array item's value:*/
       b.innerHTML += "<input type='hidden' value=\"" + parts[i] + "\">";
       /*execute a function when someone clicks on the item value (DIV element):*/
@@ -176,6 +176,7 @@ function sortSearch() {
 
 function addWhiteSpaces(text)
 {
+  /* Old, text brick 1x1 does not work, gives result Brick 1
   // regex pattern to match numbers and characters not separated by a space
   const pattern = /([a-zA-Z])(\d)|(\d)([a-zA-Z])/;
   // replace instances of pattern with a space between the number and character
@@ -185,7 +186,73 @@ function addWhiteSpaces(text)
   const xPattern = /(\d)x(\d)?/g;
   // replace instances of pattern with a space between the numbers and "x" surrounded by spaces
   text = text.replace(xPattern, '$1 x $2');
+  */
 
+  for (let i = 0; i < text.length; i++)
+  {
+    let prevChar = text[i-1];
+    let currentChar = text[i]; 
+    let nextChar = text[i+1];
+
+    if (isNumber(currentChar))
+    {
+      console.log("Is number!");
+      if (!isWhiteSpace(prevChar))
+      {
+        console.log("Prev is not whitespace!");
+        text = text.slice(0, i) + " " + text.slice(i);
+      }
+      continue;
+    }
+
+    if (isNumber(prevChar))
+    {
+      console.log("Is number!");
+      if (!isWhiteSpace(currentChar))
+      {
+        console.log("Prev is not whitespace!");
+        text = text.slice(0, i) + " " + text.slice(i);
+      }
+      continue;
+    }
+  }
+
+  text = text.replace(/\s+/g,' ').trim() //Removes multiple whitespaces in a row //"brick 1 x             1" -> brick 1 x 1
+
+  console.log("addwhitespaces returns: " + text);
+
+  return text;
+
+  function isNumber(c){
+    if (c >= '0' && c <= '9') {
+        // it is a number
+        return true
+    } else {
+        // it isn't
+        return false
+    }
+  }
+
+  function isWhiteSpace(c){
+    if (c == ' ')
+    {
+      return true
+    }
+    
+    return false;
+  }
+}
+
+function makeMatchingBold(fullText, searchText){
+  let text = fullText;
+  for (let i = 0; i < fullText.length; i++)
+  {
+    if (fullText.substring(i, i + searchText.length) == searchText)
+    {
+      text = fullText.substring(0, i) +"<strong>" + searchText + "</strong/>" + fullText.substring(i + searchText.length);
+      break;
+    }
+  }
   return text;
 }
 
@@ -206,14 +273,15 @@ let mouseOverModal = false;
 let modalLoading = false;
 
 closeModal();
+
+modalClose.addEventListener("click", closeModal);
+startLink.addEventListener("click", refresh);
+connectGoToSetInfo();
+
 function refresh()
 {
   location.reload();
 }
-
-startLink.addEventListener("click", refresh);
-modalClose.addEventListener("click", closeModal);
-connectGoToSetInfo();
 
 function openModal() {
   modal.style.display = "block";
