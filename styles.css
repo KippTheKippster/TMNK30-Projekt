@@ -10,7 +10,6 @@
 #website_header {
     display: flex;
     background-color: rgb(255, 207, 0);
-    box-shadow: black;
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.3) 0.70em 0.8em 0.70em 0.80em;
     position: fixed;
@@ -105,7 +104,7 @@ input[type=text]:focus {
 .sets_rows {
     margin: auto;
     margin-bottom: 1em;
-    border-radius: 1em;
+    /*border-radius: 1em;*/
     background-color: rgb(255, 207, 0);
     box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
     display: flex;
@@ -144,7 +143,7 @@ input[type=text]:focus {
     white-space: pre-line;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.2em;
-    text-align: top;
+    /*text-align: top; DOES NOT VALIDATE, SUGGESTION IF BROKEN: text-align: start;*/
 }
 
 hr {
@@ -218,7 +217,7 @@ hr {
 }
 
 .autocomplete-active {
-    background-color: #2f63bd !important;
+    background-color: #2f63bd; /*!important;*/
     color: #ffffff;
 }
 
