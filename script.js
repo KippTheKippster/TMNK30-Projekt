@@ -149,6 +149,7 @@ function updateSets() {
   console.log("Searching for: " + search_bar.value);
   console.log("Sending: " + post);
   xhttp.send(post);
+  updatingSets = true;
 
   xhttp.onload = function () {
     document.getElementById("sets_table").innerHTML = this.responseText;
@@ -158,6 +159,7 @@ function updateSets() {
     updateArrows();
     console.log("maxNumber: " + maxSetsNumber);
     window.scrollTo(0 , 0);
+    updatingSets = false;
   }
 }
 
@@ -268,6 +270,7 @@ const search_bar = document.getElementById("search_bar");
 const setLimit = 50;
 let currentPageNumber = 0;
 let maxSetsNumber = 0; 
+let updatingSets = false;
 const nextArrow = document.getElementById("next_arrow");
 const prevArrow = document.getElementById("prev_arrow");
 const pageNumberVisual = document.getElementById("page_number");
@@ -328,17 +331,26 @@ function updateArrows(){
 }
 
 function nextPage(){
+  if (updatingSets)
+  {
+    return;
+  }
 
-    currentPageNumber++;
-    console.log("Next Page");
-    updateSets();
+  currentPageNumber++;
+  console.log("Next Page");
+  updateSets();
 }
 
 function prevPage(){
-    currentPageNumber--;
-    console.log("Prev Page");
-    updateSets();
-  
+  if (updatingSets)
+  {
+    return;
+  }
+
+  currentPageNumber--;
+  console.log("Prev Page");
+  updateSets();
+
 }
 
 function refresh()
