@@ -46,9 +46,7 @@ input[type=text]:focus {
 .lego_img {
     height: 8em;
     padding: 0.5em;
-
     margin-left: 0;
-
 }
 
 #header_column {
@@ -84,22 +82,19 @@ input[type=text]:focus {
 .sets_img-query-text {
     text-align: center;
     margin: auto;
-    width: fit-content;
+    width:fit-content;
     margin-bottom: 1.3em;
     background-color: rgb(255, 207, 0);
     border: solid #b39100;
     border-radius: 0.4em;
     box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
-
 }
 
 .search-query-text {
-    padding: 0.3em;
     font-size: larger;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0.3em;
 }
-
-
 
 .sets_rows {
     margin: auto;
@@ -110,7 +105,8 @@ input[type=text]:focus {
     display: flex;
     border-radius: 0.5em;
     border: solid #b39100;
-    max-width: 60em;
+    width: 60em;
+    height: 12.5em;
 }
 
 .sets_rows:hover {
@@ -129,7 +125,6 @@ input[type=text]:focus {
     padding: 1em;
     width: 50em;
     vertical-align: text-top;
-
 }
 
 .sets_info_header {
@@ -142,6 +137,7 @@ input[type=text]:focus {
     white-space: pre-line;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.2em;
+    /*text-align: top; DOES NOT VALIDATE, SUGGESTION IF BROKEN: text-align: start;*/
 }
 
 hr {
@@ -183,6 +179,9 @@ hr {
     font-family: monospace;
 }
 
+
+/*https://www.w3schools.com/howto/howto_js_autocomplete.asp*/
+
 .autocomplete {
     position: relative;
     display: inline-block;
@@ -194,6 +193,7 @@ hr {
     border-bottom: none;
     border-top: none;
     z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
     top: 100%;
     left: 0;
     right: 0;
@@ -212,29 +212,21 @@ hr {
 
 .autocomplete-active {
     background-color: #2f63bd;
-    color: #ffffff;
+    color: rgb(208, 16, 18);
 }
 
 .modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
     z-index: 1;
-    /* Sit on top */
     padding-top: 100px;
-    /* Location of the box */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
-    /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
 }
 
 
@@ -322,21 +314,65 @@ hr {
     font-size: 2em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 5em;
+    margin-bottom: 5em;
 }
 
 .load-fail {
     text-align: center;
     background-color: white;
-    width: 30em;
-    height: 30em;
+    width: fit-content;
+    height: fit-content;
     margin: auto;
     border: solid #b39100;
     border-radius: 0.2em;
+    padding: 2em;
 }
 
 .load-fail-text {
     font-size: 2em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#page_arrows
+{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 1em;
+    margin-bottom: 4em;
+    align-items: center;
+}
+
+
+
+.arrow
+{
+    height: 1.2em;
+    width: 1.2em;
+    background-color: rgb(255, 207, 0);
+    border: solid #b39100;
+    margin: 0.2em;
+    border-radius: 0.2em;
+    font-family: monospace;
+    font-size: 2em;
+
+    -webkit-user-select: none;        
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    
+}
+.arrow:hover
+{
+    cursor: pointer;
+    border: solid rgb(208, 16, 18);
+    color: rgb(208, 16, 18);
+}
+#page_number:hover
+{
+    cursor: unset;
+    border: solid #b39100;
+    color: unset;
 }
 
 /* custom scrollbar */
@@ -354,4 +390,42 @@ hr {
 
 ::-webkit-scrollbar-thumb:hover {
     background-color: white;
+}
+
+@media only screen and (max-width: 20cm) {
+    html {
+        font-size: 12px;
+    }
+
+    .sets_rows {
+        width: 95%;
+        height: fit-content;
+    }
+
+    input[type=text] {
+        width: 10em;
+    }
+
+    #titlecard {
+        font-size: 1.2em;
+    }
+
+    .sets_info_header {
+        font-size: 1.4em;
+    }
+
+    .modal-content {
+
+        width: auto;
+        height: auto;
+    }
+
+    .flex-element {
+        margin: 1em;
+        padding: 1em;
+        width: 10em;
+    }
+    .lego_img {
+        height: 6em;
+    }
 }

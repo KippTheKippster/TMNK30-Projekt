@@ -123,7 +123,7 @@
     
     function PrintError()
     {
-        print("<div class='load-fail'><span class='load-fail-text'>Failed To Load! : $_POST[text] </span></div>");
+        print("<div class='load-fail'><h1 class='load-fail-text'>Failed To Load! : $_POST[text] </h1></div>");
     }
 
     function GetFileType($row, $set)
