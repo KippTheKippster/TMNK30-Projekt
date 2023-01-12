@@ -25,7 +25,7 @@ function autocomplete(inp) {
       //console.log("get parts loaded!: " + this.responseText);
       const result = JSON.parse(this.responseText);
       parts = result;
-      sortSearch();
+      //sortSearch();
       createVisuals(inp);
     }
   }
@@ -150,8 +150,10 @@ function updateSets() {
   console.log("Sending: " + post);
   xhttp.send(post);
   updatingSets = true;
+  document.body.style.cursor='progress';
 
   xhttp.onload = function () {
+    document.body.style.cursor='default';
     document.getElementById("sets_table").innerHTML = this.responseText;
     setColor();
     connectGoToSetInfo();

@@ -28,14 +28,18 @@
 
     mysqli_close($connection);
 
-    if (empty($set_result))
+    $a = $set_result;
+
+    if (mysqli_num_rows($set_result) == 0)
+    //sif(false)
     {
         PrintError();
     }
     else
     {
         PrintPart($part_result);
-        PrintAllSets($set_result);
+        print(count($set_result));
+        PrintAllSets($a);
     }
 
     function PrintPart($data)
@@ -119,7 +123,7 @@
     
     function PrintError()
     {
-        print("<div class='load-fail'><span class='load-fail-text'>Failed To Load! : $part_name </span></div>");
+        print("<div class='load-fail'><span class='load-fail-text'>Failed To Load! : $_POST[text] </span></div>");
     }
 
     function GetFileType($row, $set)
