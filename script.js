@@ -7,6 +7,12 @@ function autocomplete(inp) {
     console.log("this.value: " + inp.value + " e: " + e.data);
   });
 
+  function search(){
+    closeAllLists();
+    currentPageNumber = 0;
+    updateSets();
+  }
+
   function loadParts() {
     const xhttp = new XMLHttpRequest();
     xhttp.open("POST", "get_parts.php", true);
@@ -57,29 +63,12 @@ function autocomplete(inp) {
 
         /*close the list of autocompleted values,
         (or any other open lists of autocompleted values:*/
-        closeAllLists();
-        updateSets();
+        search();
 
       });
       a.appendChild(b);
     }
     //}
-  }
-
-  function updateSets() {
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "get_sets.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    let post = "text=" + search_bar.value;
-    console.log("Searching for: " + search_bar.value);
-    console.log(search_bar.value);
-    xhttp.send(post);
-
-    xhttp.onload = function () {
-      document.getElementById("sets_table").innerHTML = this.responseText;
-      setColor();
-      connectGoToSetInfo();
-    }
   }
 
   /*execute a function presses a key on the keyboard:*/
@@ -110,8 +99,7 @@ function autocomplete(inp) {
       }
       else {
         search_bar.value = addWhiteSpaces(search_bar.value);
-        updateSets();
-        closeAllLists();
+        search();
       }
     }
   });
@@ -137,6 +125,7 @@ function autocomplete(inp) {
   function closeAllLists(elmnt) {
     /*close all autocomplete lists in the document,
     except the one passed as an argument:*/
+    //pageNumber = 0; 
     var x = document.getElementsByClassName("autocomplete-items");
     for (var i = 0; i < x.length; i++) {
       if (elmnt != x[i] && elmnt != inp) {
@@ -148,6 +137,28 @@ function autocomplete(inp) {
   document.addEventListener("click", function (e) {
     closeAllLists(e.target);
   });
+}
+
+
+
+function updateSets() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "get_sets.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  let post = "text=" + search_bar.value + "&offset=" + setLimit * currentPageNumber + "&limit=" + setLimit;
+  console.log("Searching for: " + search_bar.value);
+  console.log("Sending: " + post);
+  xhttp.send(post);
+
+  xhttp.onload = function () {
+    document.getElementById("sets_table").innerHTML = this.responseText;
+    setColor();
+    connectGoToSetInfo();
+    maxSetsNumber = document.getElementById("item_count").value;
+    updateArrows();
+    console.log("maxNumber: " + maxSetsNumber);
+    window.scrollTo(0 , 0);
+  }
 }
 
 function sortSearch() {
@@ -176,7 +187,8 @@ function sortSearch() {
 
 function addWhiteSpaces(text)
 {
-  /* Old, text brick 1x1 does not work, gives result Brick 1
+  /* Old, search brick 1x1 does not work, gives result Brick 1
+  //
   // regex pattern to match numbers and characters not separated by a space
   const pattern = /([a-zA-Z])(\d)|(\d)([a-zA-Z])/;
   // replace instances of pattern with a space between the number and character
@@ -196,10 +208,8 @@ function addWhiteSpaces(text)
 
     if (isNumber(currentChar))
     {
-      console.log("Is number!");
       if (!isWhiteSpace(prevChar))
       {
-        console.log("Prev is not whitespace!");
         text = text.slice(0, i) + " " + text.slice(i);
       }
       continue;
@@ -207,10 +217,8 @@ function addWhiteSpaces(text)
 
     if (isNumber(prevChar))
     {
-      console.log("Is number!");
       if (!isWhiteSpace(currentChar))
       {
-        console.log("Prev is not whitespace!");
         text = text.slice(0, i) + " " + text.slice(i);
       }
       continue;
@@ -218,8 +226,6 @@ function addWhiteSpaces(text)
   }
 
   text = text.replace(/\s+/g,' ').trim() //Removes multiple whitespaces in a row //"brick 1 x             1" -> brick 1 x 1
-
-  console.log("addwhitespaces returns: " + text);
 
   return text;
 
@@ -247,9 +253,9 @@ function makeMatchingBold(fullText, searchText){
   let text = fullText;
   for (let i = 0; i < fullText.length; i++)
   {
-    if (fullText.substring(i, i + searchText.length) == searchText)
+    if (fullText.substring(i, i + searchText.length).toUpperCase() == searchText.toUpperCase())
     {
-      text = fullText.substring(0, i) +"<strong>" + searchText + "</strong/>" + fullText.substring(i + searchText.length);
+      text = fullText.substring(0, i) +"<strong>" + fullText.substring(i, i + searchText.length) + "</strong/>" + fullText.substring(i + searchText.length);
       break;
     }
   }
@@ -259,6 +265,12 @@ function makeMatchingBold(fullText, searchText){
 let parts = []
 let firstPress = true;
 const search_bar = document.getElementById("search_bar");
+const setLimit = 50;
+let currentPageNumber = 0;
+let maxSetsNumber = 0; 
+const nextArrow = document.getElementById("next_arrow");
+const prevArrow = document.getElementById("prev_arrow");
+const pageNumberVisual = document.getElementById("page_number");
 console.log("start");
 
 autocomplete(search_bar);
@@ -276,7 +288,58 @@ closeModal();
 
 modalClose.addEventListener("click", closeModal);
 startLink.addEventListener("click", refresh);
+nextArrow.addEventListener("click", nextPage)
+prevArrow.addEventListener("click", prevPage)
+currentPageNumber
+updateArrows();
 connectGoToSetInfo();
+
+function updateArrows(){
+ console.log("Updating arrows : ");
+
+ pageNumberVisual.textContent = currentPageNumber + 1;
+
+ if ((currentPageNumber+1)*setLimit < maxSetsNumber)
+ {
+  nextArrow.style.visibility = "visible";
+ }
+ else
+ {
+  nextArrow.style.visibility = "hidden";
+ }
+
+ if (currentPageNumber > 0)
+ {
+  prevArrow.style.visibility = "visible";
+ }
+ else
+ {
+  prevArrow.style.visibility = "hidden";
+ }
+
+ if (nextArrow.style.visibility == "hidden" &&   prevArrow.style.visibility == "hidden")
+ {
+  pageNumberVisual.style.visibility = "hidden";
+ }
+ else
+ {
+  pageNumberVisual.style.visibility = "visible";
+ }
+}
+
+function nextPage(){
+
+    currentPageNumber++;
+    console.log("Next Page");
+    updateSets();
+}
+
+function prevPage(){
+    currentPageNumber--;
+    console.log("Prev Page");
+    updateSets();
+  
+}
 
 function refresh()
 {
@@ -346,7 +409,6 @@ function setColor() {
   const colors = document.getElementsByClassName("brick-colors-text");
 
   for (let i = 0; i < colors.length; i++) {
-    console.log("Classlist: " + colors[i].classList);
     const colorHex = '#' + colors[i].classList[0];
     colors[i].parentElement.style.backgroundColor = colorHex;
     colors[i].style.color = getContrastColor(colorHex);

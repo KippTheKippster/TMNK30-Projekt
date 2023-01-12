@@ -1,5 +1,7 @@
 <?php
     $part_name = $_POST[text];
+    $offset = $_POST[offset];
+    $limit = $_POST[limit];
     $connection = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
 
     if (!$connection)
@@ -7,12 +9,24 @@
         die("Connection Failed");
     }
 
-    
-    $part_result = mysqli_query($connection, "SELECT * FROM parts, images WHERE parts.Partname = '$part_name' AND parts.PartID = images.ItemID");
-
     $condition = "parts.Partname = '$part_name' AND parts.PartID = inventory.ItemID AND inventory.SetID = sets.SetID AND sets.SetID = images.ItemID AND inventory.ColorID = colors.ColorID";
-    $query="SELECT * FROM parts, inventory, sets, images, colors WHERE " . $condition . " ORDER BY inventory.Quantity DESC LIMIT 2000";
+    $tables = "parts, inventory, sets, images, colors";
+    $query="SELECT SQL_CALC_FOUND_ROWS * FROM " . $tables . " WHERE " . $condition . " ORDER BY inventory.Quantity DESC LIMIT $limit OFFSET $offset";
+
+    $part_result = mysqli_query($connection, "SELECT * FROM parts, images WHERE parts.Partname = '$part_name' AND parts.PartID = images.ItemID");
+    $count_result = mysqli_query($connection, "SELECT COUNT(1) as total FROM " . $tables . " WHERE " . $condition);
+    //$count_result = mysql_query($connection, "SELECT SQL_CALC_FOUND_ROWS  *  FROM " . $tables . "");
     $set_result = mysqli_query($connection, $query);
+    //$count_result = mysqli_query($connection, "SELECT FOUND_ROWS() AS NumberOfRows");
+
+    
+    while ($row = mysqli_fetch_array($count_result))
+    {
+        print("<input type='hidden' id='item_count' value='$row[0]'>");
+    } 
+
+
+    mysqli_close($connection);
 
     if (empty($set_result))
     {
@@ -33,9 +47,8 @@
         $fileName = "$type[1]/$row[PartID].$type[0]";
         $source = "$filePath$fileName";
 
-        print("<div class='sets_img-query-text'><span class='search-query-text'> You are searching for: $row[Partname]</span></div>");
+        print("<div class='sets_img-query-text'><span class='search-query-text'> You are searching for: $row[Partname] </span></div>");
         print("<div class='sets_img-query'><img src='$source' alt='$source' class='sets_img'></div>");
-        //print("")
     }
 
     function PrintAllSets($data)
@@ -106,7 +119,7 @@
     
     function PrintError()
     {
-        print("<div class='load-fail'><span class='load-fail-text'>Failed To Load!</span></div>");
+        print("<div class='load-fail'><span class='load-fail-text'>Failed To Load! : $part_name </span></div>");
     }
 
     function GetFileType($row, $set)
