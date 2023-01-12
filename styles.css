@@ -13,11 +13,10 @@
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.3) 0.70em 0.8em 0.70em 0.80em;
     position: fixed;
-    justify-content:center;
-
+    justify-content: center;
 }
-#titlecard
-{
+
+#titlecard {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: xx-large;
     margin: 0.5em;
@@ -49,7 +48,7 @@ input[type=text]:focus {
     padding: 0.5em;
 
     margin-left: 0;
-    
+
 }
 
 #header_column {
@@ -75,31 +74,32 @@ input[type=text]:focus {
     border-radius: 0.4em;
     box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
 }
+
 .sets_img-query {
     margin: auto;
-    max-width: 10em; 
+    max-width: 10em;
     margin-bottom: 0.5em;
-    text-align: center;
 }
+
 .sets_img-query-text {
-
     text-align: center;
+    margin: auto;
+    width: fit-content;
     margin-bottom: 1.3em;
-
-}
-.search-query-text
-{
-    text-align: center;
-    font-size: larger;
     background-color: rgb(255, 207, 0);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    
-    padding: 0.3em;
-
     border: solid #b39100;
     border-radius: 0.4em;
     box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
+
 }
+
+.search-query-text {
+    padding: 0.3em;
+    font-size: larger;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
 
 .sets_rows {
     margin: auto;
@@ -110,8 +110,7 @@ input[type=text]:focus {
     display: flex;
     border-radius: 0.5em;
     border: solid #b39100;
-    width: 60em;
-    height: 12.5em;
+    max-width: 60em;
 }
 
 .sets_rows:hover {
@@ -143,7 +142,6 @@ input[type=text]:focus {
     white-space: pre-line;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.2em;
-    /*text-align: top; DOES NOT VALIDATE, SUGGESTION IF BROKEN: text-align: start;*/
 }
 
 hr {
@@ -182,11 +180,8 @@ hr {
 
 .brick-colors-text {
     color: white;
-    font-family:monospace;
+    font-family: monospace;
 }
-
-
-/*https://www.w3schools.com/howto/howto_js_autocomplete.asp*/
 
 .autocomplete {
     position: relative;
@@ -199,7 +194,6 @@ hr {
     border-bottom: none;
     border-top: none;
     z-index: 99;
-    /*position the autocomplete items to be the same width as the container:*/
     top: 100%;
     left: 0;
     right: 0;
@@ -217,7 +211,7 @@ hr {
 }
 
 .autocomplete-active {
-    background-color: #2f63bd; /*!important;*/
+    background-color: #2f63bd;
     color: #ffffff;
 }
 
@@ -249,8 +243,8 @@ hr {
     background-color: #ffffff;
     margin: auto;
     padding: 0;
-    width: 80em;
-    height: 50em;
+    max-width: 80em;
+    max-height: 50em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -302,9 +296,9 @@ hr {
     margin-bottom: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-#close-spacer
-{
-    float:right;
+
+#close-spacer {
+    float: right;
     width: 3.5em;
 
 }
@@ -313,7 +307,7 @@ hr {
     color: rgb(0, 0, 0);
     font-size: 4em;
     font-weight: bold;
-    position: fixed; 
+    position: fixed;
 }
 
 #close:hover,
@@ -339,6 +333,7 @@ hr {
     border: solid #b39100;
     border-radius: 0.2em;
 }
+
 .load-fail-text {
     font-size: 2em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
