@@ -8,8 +8,14 @@ function autocomplete(inp) {
   });
 
   function search(){
+    if (updatingSets)
+    {
+      return
+    }
+
     closeAllLists();
     currentPageNumber = 0;
+    currentSet = search_bar.value;
     updateSets();
   }
 
@@ -145,8 +151,8 @@ function updateSets() {
   const xhttp = new XMLHttpRequest();
   xhttp.open("POST", "get_sets.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  let post = "text=" + search_bar.value + "&offset=" + setLimit * currentPageNumber + "&limit=" + setLimit;
-  console.log("Searching for: " + search_bar.value);
+  let post = "text=" + currentSet + "&offset=" + setLimit * currentPageNumber + "&limit=" + setLimit;
+  console.log("Searching for: " + currentSet);
   console.log("Sending: " + post);
   xhttp.send(post);
   updatingSets = true;
@@ -288,6 +294,7 @@ const modalClose = document.getElementById("close");
 const startLink = document.getElementById("start-row");
 let mouseOverModal = false;
 let modalLoading = false;
+let currentSet = "";
 
 closeModal();
 
@@ -396,7 +403,7 @@ function loadModal(setID) {
   xhttp.open("POST", "get_set_info.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   let post = "id=" + setID;
-  console.log(search_bar.value);
+  console.log(currentSet);
   xhttp.send(post);
   modalLoading = true;
 

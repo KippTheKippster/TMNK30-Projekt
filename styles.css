@@ -169,7 +169,7 @@ hr {
     background-color: rgb(208, 16, 18);
     border: 0.15em black solid;
     border-radius: 0.2em;
-    margin-right: 2em;
+    margin-right: 1em;
     margin-top: 0.6em;
     text-align: center;
 }
@@ -399,7 +399,7 @@ hr {
 
     .sets_rows {
         width: 95%;
-        height: fit-content;
+        height: auto;
     }
 
     input[type=text] {
@@ -427,5 +427,9 @@ hr {
     }
     .lego_img {
         height: 6em;
+    }
+
+    .brick-colors-text {
+        font-size: 10px;
     }
 }
