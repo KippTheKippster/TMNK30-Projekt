@@ -1,8 +1,8 @@
 <?php
-    $part_name = $_POST[text];
-    $offset = $_POST[offset];
-    $limit = $_POST[limit];
     $connection = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
+    $part_name = mysqli_real_escape_string($connection, $_POST[text]);
+    $offset = mysqli_real_escape_string($connection, $_POST[offset]);
+    $limit = mysqli_real_escape_string($connection, $_POST[limit]);
 
     if (!$connection)
     {
@@ -117,7 +117,7 @@
     
     function PrintError()
     {
-        print("<div class='load-fail'><h1 class='load-fail-text'>Failed To Load! : $_POST[text] </h1></div>");
+        print("<div class='load-fail'><h1 class='load-fail-text'>No sets found with piece: $_POST[text]</h1><h2>This piece may not exist or no sets include this piece.</h2></div>");
     }
 
     function GetFileType($row, $set)
