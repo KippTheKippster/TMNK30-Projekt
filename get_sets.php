@@ -33,7 +33,6 @@
     else
     {
         PrintPart($part_result);
-        print(count($set_result));
         PrintAllSets($set_result);
     }
 
@@ -106,7 +105,7 @@
                 <span class='sets_info_header'>$set_name</span>
                 <hr>
                 <div class='sets_info_text'><span class='info_id'>ID: </span><span class='id_number'>$set_id</span>
-                    <span class='info_id'>Year:</span><span class='id_number'>$year</span>
+                    <span class='info_id'>Year: </span><span class='id_number'>$year</span>
                     <span class='id_number'>Your piece is included in these colors:</span>
                 </div>  
                 <div class='brick-colors-container'>

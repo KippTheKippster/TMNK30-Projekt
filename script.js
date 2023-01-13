@@ -10,6 +10,7 @@ function autocomplete(inp) {
   function search(){
     closeAllLists();
     currentPageNumber = 0;
+    currentSet = search_bar.value;
     updateSets();
   }
 
@@ -142,14 +143,19 @@ function autocomplete(inp) {
 
 
 function updateSets() {
+  if (loadingSets)
+  {
+    return;
+  }
+  
   const xhttp = new XMLHttpRequest();
   xhttp.open("POST", "get_sets.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  let post = "text=" + search_bar.value + "&offset=" + setLimit * currentPageNumber + "&limit=" + setLimit;
-  console.log("Searching for: " + search_bar.value);
+  let post = "text=" + currentSet + "&offset=" + setLimit * currentPageNumber + "&limit=" + setLimit;
+  console.log("Searching for: " + currentSet);
   console.log("Sending: " + post);
   xhttp.send(post);
-  updatingSets = true;
+  loadingSets = true;
   document.body.style.cursor='progress';
 
   xhttp.onload = function () {
@@ -161,7 +167,7 @@ function updateSets() {
     updateArrows();
     console.log("maxNumber: " + maxSetsNumber);
     window.scrollTo(0 , 0);
-    updatingSets = false;
+    loadingSets = false;
   }
 }
 
@@ -272,7 +278,7 @@ const search_bar = document.getElementById("search_bar");
 const setLimit = 50;
 let currentPageNumber = 0;
 let maxSetsNumber = 0; 
-let updatingSets = false;
+let loadingSets = false;
 const nextArrow = document.getElementById("next_arrow");
 const prevArrow = document.getElementById("prev_arrow");
 const pageNumberVisual = document.getElementById("page_number");
@@ -288,6 +294,7 @@ const modalClose = document.getElementById("close");
 const startLink = document.getElementById("start-row");
 let mouseOverModal = false;
 let modalLoading = false;
+let currentSet = "";
 
 closeModal();
 
@@ -333,7 +340,7 @@ function updateArrows(){
 }
 
 function nextPage(){
-  if (updatingSets)
+  if (loadingSets)
   {
     return;
   }
@@ -344,7 +351,7 @@ function nextPage(){
 }
 
 function prevPage(){
-  if (updatingSets)
+  if (loadingSets)
   {
     return;
   }
@@ -361,6 +368,11 @@ function refresh()
 }
 
 function openModal() {
+  if (loadingSets)
+  {
+    return;
+  }
+
   modal.style.display = "block";
   modalContent.addEventListener("mouseleave", function(event){
     mouseOverModal = false;
@@ -392,11 +404,16 @@ function closeModal() {
 }
 
 function loadModal(setID) {
+  if (loadingSets)
+  {
+    return;
+  }
+
   const xhttp = new XMLHttpRequest();
   xhttp.open("POST", "get_set_info.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   let post = "id=" + setID;
-  console.log(search_bar.value);
+  console.log(currentSet);
   xhttp.send(post);
   modalLoading = true;
 
