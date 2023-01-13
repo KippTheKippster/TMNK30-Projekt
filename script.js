@@ -238,10 +238,6 @@ function autocomplete(inp) {
 
 //Loads and creates the new sets
 function updateSets() {
-  if (loadingSets) {
-    return;
-  }
-
   //Uses ajax to post a form without refreshing the site, sets the printed text to a html element to create the visuals.
   const xhttp = new XMLHttpRequest();
   xhttp.open("POST", "get_sets.php", true);
