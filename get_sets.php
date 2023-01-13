@@ -11,13 +11,11 @@
 
     $condition = "parts.Partname = '$part_name' AND parts.PartID = inventory.ItemID AND inventory.SetID = sets.SetID AND sets.SetID = images.ItemID AND inventory.ColorID = colors.ColorID";
     $tables = "parts, inventory, sets, images, colors";
-    $query="SELECT SQL_CALC_FOUND_ROWS * FROM " . $tables . " WHERE " . $condition . " ORDER BY inventory.Quantity DESC LIMIT $limit OFFSET $offset";
+    $query="SELECT * FROM " . $tables . " WHERE " . $condition . " ORDER BY inventory.Quantity DESC, sets.Setname ASC LIMIT $limit OFFSET $offset";
 
     $part_result = mysqli_query($connection, "SELECT * FROM parts, images WHERE parts.Partname = '$part_name' AND parts.PartID = images.ItemID");
     $count_result = mysqli_query($connection, "SELECT COUNT(1) as total FROM " . $tables . " WHERE " . $condition);
-    //$count_result = mysql_query($connection, "SELECT SQL_CALC_FOUND_ROWS  *  FROM " . $tables . "");
     $set_result = mysqli_query($connection, $query);
-    //$count_result = mysqli_query($connection, "SELECT FOUND_ROWS() AS NumberOfRows");
 
     
     while ($row = mysqli_fetch_array($count_result))
@@ -28,17 +26,15 @@
 
     mysqli_close($connection);
 
-    $a = $set_result;
-
     if (mysqli_num_rows($set_result) == 0)
-    //sif(false)
     {
         PrintError();
     }
     else
     {
         PrintPart($part_result);
-        PrintAllSets($a);
+        print(count($set_result));
+        PrintAllSets($set_result);
     }
 
     function PrintPart($data)
@@ -110,7 +106,7 @@
                 <span class='sets_info_header'>$set_name</span>
                 <hr>
                 <div class='sets_info_text'><span class='info_id'>ID: </span><span class='id_number'>$set_id</span>
-                    <span class='info_id'>Year: </span><span class='id_number'>$year</span>
+                    <span class='info_id'>Year:</span><span class='id_number'>$year</span>
                     <span class='id_number'>Your piece is included in these colors:</span>
                 </div>  
                 <div class='brick-colors-container'>
