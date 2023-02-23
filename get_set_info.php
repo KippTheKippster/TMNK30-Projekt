@@ -83,6 +83,7 @@
 
         // Flexbox container
         print("<div class='flexboxContainer'>");
+        
         while ($row = mysqli_fetch_array($data))  //Goes through all rows of the data and prints out the piece-
         {
             //Figures out what image the piece is using, will only choose the small ones to preserve loading times and the data required to load

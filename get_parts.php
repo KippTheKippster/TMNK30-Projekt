@@ -7,12 +7,12 @@
     $search_name = mysqli_real_escape_string($connection, $_POST[text]);
     
     //Gets a result from the database, checks if the input text is included in the column 'partname' and orders it by the length of the names
-    $result = mysqli_query($connection, "SELECT Partname, LENGTH(Partname) FROM parts WHERE Partname LIKE '%$search_name%' ORDER BY LENGTH(Partname) ASC LIMIT 40");
+    $result = mysqli_query($connection, "SELECT Partname, LENGTH(Partname) FROM parts WHERE Partname LIKE '%$search_name%' ORDER BY LENGTH(Partname), Partname ASC LIMIT 40");
 
     mysqli_close($connection);
 
     //Creates an array and pushes all the result into it
-    $parts_array = array($search_name); //Pushes the input text to show the user what they are currently writting. 
+$parts_array = array(/*$search_name*/); //Pushes the input text to show the user what they are currently writting. 
 
     while ($row = mysqli_fetch_array($result)) 
     {   

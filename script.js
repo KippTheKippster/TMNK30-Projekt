@@ -3,15 +3,14 @@ function autocomplete(inp) {
   var currentFocus;
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function (e) {
-    console.log("Pressed");
     loadParts();
-    console.log("this.value: " + inp.value + " e: " + e.data);
   });
 
   function search() {
     closeAllLists();
     currentPageNumber = 0;
     currentSet = search_bar.value;
+    colorID = 0;
     updateSets();
   }
 
@@ -38,7 +37,7 @@ function autocomplete(inp) {
     var a, b, i, val = inp.value;
     /*close any already open lists of autocompleted values*/
     closeAllLists();
-    if (!val) { return false; }
+    if (!val || parts.length <= 0) { return false; }
     currentFocus = -1;
     /*create a DIV element that will contain the items (values):*/
     a = document.createElement("DIV");
@@ -242,7 +241,7 @@ function updateSets() {
   const xhttp = new XMLHttpRequest();
   xhttp.open("POST", "get_sets.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  let post = "text=" + currentSet + "&offset=" + setLimit * currentPageNumber + "&limit=" + setLimit;
+  let post = "text=" + currentSet + "&offset=" + setLimit * currentPageNumber + "&limit=" + setLimit + "&colorID=" + colorID;
   console.log("Searching for: " + currentSet);
   console.log("Sending: " + post);
   xhttp.send(post);
@@ -256,6 +255,7 @@ function updateSets() {
     document.getElementById("sets_table").innerHTML = this.responseText;
     setBrickColorTextContrastColor();
     connectGoToSetInfo();
+    connectColorPicker();
     //Gets the max number of sets that the search contains
     maxSetsNumber = document.getElementById("item_count").value;
     updateArrows();
@@ -288,6 +288,7 @@ const startLink = document.getElementById("start-row");
 let mouseOverModal = false;
 let modalLoading = false;
 let currentSet = "";
+let colorID = 0;
 
 closeModal();
 
@@ -364,12 +365,10 @@ function openModal() {
   modal.style.display = "block";
   modalContent.addEventListener("mouseleave", function (event) {
     mouseOverModal = false;
-    console.log(mouseOverModal);
   });
 
   modalContent.addEventListener("mouseover", function (event) {
     mouseOverModal = true;
-    console.log(mouseOverModal);
   });
 
   modal.addEventListener("click", function (event) {
@@ -410,6 +409,21 @@ function loadModal(setID) {
   }
 }
 
+function connectColorPicker(){
+  const picker = document.getElementById("colors-dropdown");
+  picker.value = colorID;
+  picker.addEventListener("click", function(e)
+  {
+    if (colorID != picker.value)
+    {
+      colorID = picker.value;
+      console.log("New color: " + picker.value);
+      currentPageNumber = 0;
+      updateSets();
+    }
+  });
+}
+
 //Connects all sets to a click function that will load and open the modal with it's information
 function connectGoToSetInfo() {
   const a = document.getElementsByClassName("go_to_set_info");
@@ -417,7 +431,7 @@ function connectGoToSetInfo() {
   for (let i = 0; i < a.length; i++) {
     a[i].addEventListener("click", function (e) {
       const id = this.getElementsByClassName("id_number")[0].textContent;
-      console.log("Pressed: " + this.getElementsByClassName("id_number")[0].textContent);
+      console.log("Pressed set: " + this.getElementsByClassName("id_number")[0].textContent);
       openModal();
       loadModal(id);
     });

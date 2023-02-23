@@ -1,4 +1,4 @@
-#website_body { /*Repeats img to create high res background*/
+#website_body {
     background-image: url("images/lego_base.png");
     background-repeat: repeat;
     background-size: 2em;
@@ -7,7 +7,7 @@
     margin: 0;
 }
 
-#website_header { /*Holds the elements of the website header (lego logo, searchbar, img)*/
+#website_header {
     display: flex;
     background-color: rgb(255, 207, 0);
     width: 100%;
@@ -16,17 +16,17 @@
     justify-content: center;
 }
 
-#titlecard { /*The blockbusiness css*/
+#titlecard {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: xx-large;
     margin: 0.5em;
 }
 
-#search_bar { /*searchbar font*/
+#search_bar {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-input[type=text] { /*styling for the searchbar*/
+input[type=text] {
     width: 40em;
     padding: 12px 20px;
     border: 3px solid #ccc;
@@ -38,26 +38,32 @@ input[type=text] { /*styling for the searchbar*/
     color: black;
 }
 
-input[type=text]:focus { /*changes searchbar attributes when focused*/
+input[type=text]:focus {
     background-color: rgb(241, 241, 241);
     border: 3px solid #2f63bd;
 }
 
-.lego_img { /*styling for images in header*/
+.lego_img {
     height: 8em;
     padding: 0.5em;
     margin-left: 0;
 }
 
-#header_column { /*div containing title text and searchbar*/
+#header_column {
     text-align: center;
 }
 
-#spacer { /*compensates for posistion fixed on header (puts results in correct height)*/
+#right_header_column {
+    text-align: right;
+    margin: 0;
+    padding: 0;
+}
+
+#spacer {
     height: 14em;
 }
 
-.sets_img { /*styling for images from searched results*/
+.sets_img {
     max-width: 10em;
     max-height: 10em;
     object-fit: contain;
@@ -67,14 +73,34 @@ input[type=text]:focus { /*changes searchbar attributes when focused*/
     box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
 }
 
-.sets_img-query { /*img of searched piece*/
+.sets_img-query {
     margin: auto;
     max-width: 10em;
     margin-bottom: 0.5em;
     text-align: center;
 }
 
-.sets_img-query-text { /*div containing search query text*/
+.query-color-picker {
+    text-align: center;
+    margin-bottom: 1.3em;
+}
+.query-color-picker-box:hover { 
+    cursor: pointer;
+    border-color: rgb(208, 16, 18);
+    
+}
+.query-color-picker-box {
+
+    background-color: rgb(255, 207, 0);
+    border: solid #b39100;
+    border-radius: 0.4em;
+    box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    
+}
+
+.sets_img-query-text {
     text-align: center;
     margin: auto;
     width:fit-content;
@@ -84,16 +110,32 @@ input[type=text]:focus { /*changes searchbar attributes when focused*/
     border-radius: 0.4em;
     box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
 }
+.query-color-picker {
 
-.search-query-text { /*name of searched piece*/
+    text-align: center;
+    margin-bottom: 1.3em;
+}
+.query-color-picker-box {
+
+    background-color: rgb(255, 207, 0);
+    border: solid #b39100;
+    border-radius: 0.4em;
+    box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    
+}
+
+.search-query-text {
     font-size: larger;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 0.3em;
 }
 
-.sets_rows { /*flexbox containing all elements for respective sets*/
+.sets_rows {
     margin: auto;
     margin-bottom: 1em;
+    /*border-radius: 1em;*/
     background-color: rgb(255, 207, 0);
     box-shadow: rgba(0, 0, 0, 0.3) 0.30em 0.30em 0.80em 0.30em;
     display: flex;
@@ -103,34 +145,35 @@ input[type=text]:focus { /*changes searchbar attributes when focused*/
     height: 12.5em;
 }
 
-.sets_rows:hover { /*styling when placing cursor on sets rows*/
+.sets_rows:hover {
     cursor: pointer;
     border-color: rgb(208, 16, 18);
     color: rgb(208, 16, 18);
 }
 
-.sets_img_td { /*div containing respective set img*/
+.sets_img_td {
     padding: 1em;
     text-align: center;
     width: 12em;
 }
 
-.sets_info_td { /*div containing respective set info (all text)*/
+.sets_info_td {
     padding: 1em;
     width: 50em;
     vertical-align: text-top;
 }
 
-.sets_info_header { /*header in respective set row (name of set)*/
+.sets_info_header {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: x-large;
     text-transform: capitalize;
 }
 
-.sets_info_text { /*text in set row*/
+.sets_info_text {
     white-space: pre-line;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.2em;
+    /*text-align: top; DOES NOT VALIDATE, SUGGESTION IF BROKEN: text-align: start;*/
 }
 
 hr {
@@ -139,59 +182,61 @@ hr {
     border: none;
 }
 
-.info_id { /*styling for ID and Year in set rows*/
+.info_id {
     height: 1.5em;
     font-weight: bold;
     margin-bottom: 0.5em;
     color: black;
 }
 
-.id_number { /*styling for respective numbers from ID and Year*/
+.id_number {
     color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.brick-colors-container { /*flexbox containing brick-colors element*/
+.brick-colors-container {
     display: flex;
     flex-wrap: wrap;
 }
 
-.brick-colors { /*box showing color of the searched brick in respective set*/
+.brick-colors {
     height: 1.5em;
     width: 1.5em;
     background-color: rgb(208, 16, 18);
     border: 0.15em black solid;
     border-radius: 0.2em;
-    margin-right: 2em;
+    margin-right: 1em;
     margin-top: 0.6em;
     text-align: center;
 }
 
-.brick-colors-text { /*text inside brick-colors (amount of searched brick inside respective set)*/
+.brick-colors-text {
     color: white;
     font-family: monospace;
 }
 
-
 /*https://www.w3schools.com/howto/howto_js_autocomplete.asp*/
 
-.autocomplete { /*styling for search bar making autocomplete results width match search bar width*/
+.autocomplete {
     position: relative;
     display: inline-block;
 }
 
-.autocomplete-items { /*styling for all autocomplete elements*/
+.autocomplete-items {
     position: absolute;
     border: 1px solid #d4d4d4;
     border-bottom: none;
     border-top: none;
     z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
     top: 100%;
     left: 0;
     right: 0;
+    overflow-y: scroll;
+    max-height: 40em ;
 }
 
-.autocomplete-items div { /*styling for individual autocomplete elements*/
+.autocomplete-items div {
     padding: 10px;
     cursor: pointer;
     background-color: #fff;
@@ -203,10 +248,11 @@ hr {
 }
 
 .autocomplete-active {
+    background-color: #2f63bd;
     color: rgb(208, 16, 18);
 }
 
-.modal { /*styling for entire screen when pressed set*/
+.modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -221,13 +267,13 @@ hr {
 }
 
 
-.modal-content { /*styling for the popup box*/
+.modal-content {
     position: relative;
     background-color: #ffffff;
     margin: auto;
     padding: 0;
     max-width: 80em;
-    max-height: 40em;
+    max-height: 50em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -239,27 +285,26 @@ hr {
     border-radius: 0.2em;
 }
 
-
-.flexbox-container-header { /*flexbox containing all header elements in modal*/
+.flexbox-container-header {
     display: flex;
     margin: 3em 1em 1em;
 }
 
-.flex-element-header { /*div containing all text used in header of modal*/
-    margin-left: 2em;
-}
-
-.modal-header-text { /*set name in header in modal*/
+.modal-header-text {
     margin-top: 0;
     margin-bottom: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.modal-header-info-text { /*set ID and Release Year in modal*/
+.flex-element-header {
+    margin-left: 2em;
+}
+
+.modal-header-info-text {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.flexboxContainer { /*flexbox witin modal containing all flex-element's (peices of the selected set)*/
+.flexboxContainer {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
@@ -269,25 +314,25 @@ hr {
     /* center items horizontally, in this case */
 }
 
-.flex-element { /*a peice within the selected set popup*/
+.flex-element {
     margin: 1em;
     padding: 1em;
     width: 15em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.modal-text { /*text within flex-element (piece from selected set) (amount + color + partname)*/
+.modal-text {
     margin-bottom: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#close-spacer { /*compensates #close position fixed and aligns the X to the left*/
+#close-spacer {
     float: right;
     width: 3.5em;
 
 }
 
-#close { /*styling for the modal X*/
+#close {
     color: rgb(0, 0, 0);
     font-size: 4em;
     font-weight: bold;
@@ -295,13 +340,13 @@ hr {
 }
 
 #close:hover,
-#close:focus { /*turns modal X red and changes pointer */
+#close:focus {
     color: rgb(255, 0, 0);
     text-decoration: none;
     cursor: pointer;
 }
 
-.loading { /*styling for the loading screen*/ 
+.loading {
     text-align: center;
     font-size: 2em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -309,7 +354,7 @@ hr {
     margin-bottom: 5em;
 }
 
-.load-fail { /* styling for fail to load message*/
+.load-fail {
     text-align: center;
     background-color: white;
     width: fit-content;
@@ -320,12 +365,12 @@ hr {
     padding: 2em;
 }
 
-.load-fail-text { /* fail to load text adjustments*/ 
+.load-fail-text {
     font-size: 2em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#page_arrows /*div containing .arrow*/
+#page_arrows
 {
     display: flex;
     text-align: center;
@@ -337,7 +382,7 @@ hr {
 
 
 
-.arrow  /*styling for elements at bottom of page*/
+.arrow
 {
     height: 1.2em;
     width: 1.2em;
@@ -348,28 +393,26 @@ hr {
     font-family: monospace;
     font-size: 2em;
 
-    /*https://stackoverflow.com/questions/924916/is-there-a-way-to-make-a-div-unselectable*/
-    /*the copied code makes element unselectable*/
     -webkit-user-select: none;        
     -moz-user-select: none; 
     -ms-user-select: none; 
     user-select: none; 
     
 }
-.arrow:hover 
+.arrow:hover
 {
     cursor: pointer;
     border: solid rgb(208, 16, 18);
     color: rgb(208, 16, 18);
 }
-#page_number:hover /*removes hover styling from middle element (page number)*/
+#page_number:hover
 {
     cursor: unset;
     border: solid #b39100;
     color: unset;
 }
-/*https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp*/
-/* custom scrollbar .DOES NOT WORK ON FIREFOX*/
+
+/* custom scrollbar */
 ::-webkit-scrollbar {
     width: 20px;
     background-color: #ccc;
@@ -386,21 +429,21 @@ hr {
     background-color: white;
 }
 
-@media only screen and (max-width: 20cm) { /* CSS for when screen is narrower than 20cm (mobile vers.) */
+@media only screen and (max-width: 20cm) {
     html {
         font-size: 12px;
     }
 
     .sets_rows {
         width: 95%;
-        height: fit-content;
+        height: auto;
     }
 
     input[type=text] {
         width: 10em;
     }
 
-    #titlecard { 
+    #titlecard {
         font-size: 1.2em;
     }
 
@@ -421,5 +464,9 @@ hr {
     }
     .lego_img {
         height: 6em;
+    }
+
+    .brick-colors-text {
+        font-size: 10px;
     }
 }
