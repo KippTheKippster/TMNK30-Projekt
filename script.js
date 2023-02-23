@@ -412,6 +412,10 @@ function loadModal(setID) {
 function connectColorPicker(){
   const picker = document.getElementById("colors-dropdown");
   picker.value = colorID;
+  if (picker.options.length == 1)
+  {
+    picker.value = picker.options[0].value;
+  }
   picker.addEventListener("click", function(e)
   {
     if (colorID != picker.value)

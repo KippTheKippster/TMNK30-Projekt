@@ -69,7 +69,12 @@
         print ("<div class = 'query-color-picker'>");
         print ("<select name='colors' id='colors-dropdown' class = 'query-color-picker-box'>");
 
-        print("<option value='0'>Any color</option>");
+        $selected = "";
+
+        if (mysqli_num_rows($color_data) != 1)
+        {
+            print("<option value='0'>Any color</option>");
+        }
     
         while ($row = mysqli_fetch_array($color_data)) 
         {   
@@ -81,13 +86,7 @@
             array_push($colors, $color_name);
             array_push($colors, $color_id);
             array_push($colors, $color_rgb);
-            print(
-                "<option value='$color_id'>
-                    <div class='brick-colors'>
-                        <span class='$row[ColorRGB] brick-colors-text'>$row[Quantity]</span>
-                    </div>
-                    $color_name
-                </option>"
+            print("<option value='$color_id' selected = 'selected'> $color_name </option>"
             );
         }
     
